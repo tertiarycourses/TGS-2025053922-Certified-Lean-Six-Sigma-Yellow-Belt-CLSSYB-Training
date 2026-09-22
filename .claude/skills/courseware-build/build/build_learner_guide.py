@@ -16,9 +16,12 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 HERE=os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0,HERE)
 import course_data as C
+import lab_dataset as D
+import lab_files as LF
 from data_domain1 import DOMAIN1; from data_domain2 import DOMAIN2
 from data_domain3 import DOMAIN3
 ACT=DOMAIN1+DOMAIN2+DOMAIN3
+LABDIR={a['num']: LF.dirname(a['num'], a['title']) for a in ACT}
 import prodoc
 def _find_repo(start):
     env=os.environ.get("COURSE_REPO")
@@ -90,6 +93,23 @@ bullets([
  "Elective labs extend the same scenario with additional Lean Six Sigma tools; complete them if time allows or as post-course practice.",
  "All labs build on the same Contoso Service Desk scenario, so outputs carry forward from one lab to the next.",
 ])
+h3("The Contoso Service Desk data set")
+p(f"Every lab works from one real-shaped data set: two weeks of service desk activity — "
+  f"{D.N} tickets, of which {D.DEFECTIVE} contained at least one defect, with {D.TOTAL_DEFECTS} defects "
+  f"recorded across {D.OPP} defect opportunities per ticket. Mean assignment time is {D.MEAN_MIN} minutes "
+  f"(median {D.MEDIAN_MIN}) against a {D.TARGET_MIN}-minute improvement goal.")
+p("These are the same figures the Case Study assessment uses, so the numbers you calculate in the labs "
+  "are the numbers you will be assessed on.")
+bullets([
+ f"Yield {D.YIELD*100:.0f}% · DPU {D.DPU:.2f} · DPO {D.DPO:.4f} · DPMO {int(D.DPMO):,} · sigma level ~{D.SIGMA}.",
+ "Pareto vital few: Delayed assignment (40%) and Missing information (25%) — 65% of all defects.",
+ "The run chart hides a genuine special cause: performance shifts from day 7, when the ITSM platform was migrated.",
+ "Each lab folder carries its own data/ (mock data to analyse) and templates/ (worksheets to complete).",
+])
+h3("Where to find each lab's files")
+p("Each lab is a self-contained folder under labs/ — labs/lab-NN-<name>/ — containing README.md "
+  "(the worksheet), data/ (the CSV mock data) and templates/ (the blank CSV worksheets you fill in). "
+  "Open the CSV files in Excel, Google Sheets or LibreOffice Calc, and always work on a copy.")
 h3("Conventions used in every lab")
 bullets([
  "Each lab states its objective, the deliverable you produce, the steps, and a check to confirm you are done.",
@@ -115,9 +135,23 @@ for t in C.TOPICS:
         p(a["build"]+f"   (Tools and techniques: {a['services']}.)")
         h3("Step-by-step")
         steps([(instr,cmd) for instr,cmd in a["steps"]])
+        data_f, tmpl_f, lab_note = LF.files_for(a["num"])
+        if data_f or tmpl_f:
+            h3("Data and worksheets for this lab")
+            items=[]
+            for name in sorted(data_f):
+                items.append(f"data/{name} — {len(data_f[name])-1} rows of mock data "
+                             f"({', '.join(str(c) for c in data_f[name][0])})")
+            for name in sorted(tmpl_f):
+                items.append(f"templates/{name} — worksheet to complete "
+                             f"({', '.join(str(c) for c in tmpl_f[name][0])})")
+            bullets(items)
+            if lab_note:
+                p(lab_note)
         h3("Check your work")
         p(a["test"])
-        note(f"The full worksheet for this lab is in labs/lab-{a['num']:02d}-*.md.")
+        note(f"The full worksheet, the mock data and the blank templates for this lab are in "
+             f"labs/{LABDIR[a['num']]}/ — open README.md in that folder.")
         rule()
 
 h1("Quick Reference — Formulas You Should Know")
@@ -270,7 +304,8 @@ prodoc.add_version_control(doc,[
   "Analyze labs; added quick-reference formulas, the eight wastes and an expanded glossary.",C.TRAINER),
  ("5", C.VERSION_DATE, "Integrated the SIPOC & Process Map Builder (alfredang.github.io/sipoc/) into Lab 3 and elective Lab 12, with a tool walkthrough added to the Define phase and the online toolkit slide updated to list all five tools.", C.TRAINER),
  ("6", C.VERSION_DATE, "Fixed clipped headings: slide titles now auto-fit to a single line so long lab titles can no longer overprint the LAB/ELECTIVE chips beneath them.", C.TRAINER),
- ("7", C.VERSION_DATE, "Table of contents restored to a live, updatable Word field (previously flattened to static text), so it refreshes on open or F9 while still rendering correctly in the distributed PDF.", C.TRAINER),
+ ("7", "20 July 2026", "Table of contents restored to a live, updatable Word field (previously flattened to static text), so it refreshes on open or F9 while still rendering correctly in the distributed PDF.", C.TRAINER),
+  ("8", C.VERSION_DATE, "Labs restructured into one self-contained folder per lab, each with its own mock data (data/*.csv) and blank worksheets (templates/*.csv). The Contoso Service Desk data set is now generated from a single verified source and reconciles exactly with the Case Study assessment figures (400 tickets, 96 defective, 120 defects, yield 76%, DPU 0.30, DPMO 50,000). Slides, Lesson Plan and Learner Guide updated to reference the lab data.", C.TRAINER),
 ])
 prodoc.add_toc(doc)
 

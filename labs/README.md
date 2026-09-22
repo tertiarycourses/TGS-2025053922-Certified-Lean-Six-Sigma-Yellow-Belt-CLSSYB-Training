@@ -1,8 +1,23 @@
 # Labs — Certified Lean Six Sigma Yellow Belt (CLSSYB) Training
 
-**WSQ Course Code:** TGS-2025053922  |  **Version v7 · 20 July 2026**
+**WSQ Course Code:** TGS-2025053922  |  **Version v8 · 23 September 2026**
 
 These labs follow the DMAIC roadmap end to end. Every lab builds on the same Contoso Service Desk scenario, so your outputs accumulate into one complete improvement package.
+
+## How each lab is organised
+
+Each lab is a self-contained folder:
+
+```
+lab-NN-<name>/
+  README.md     the lab worksheet - objective, steps and the check
+  data/         the mock data you analyse (CSV - open in Excel or Sheets)
+  templates/    blank worksheets you fill in (CSV)
+```
+
+All the data describes one fortnight at the Contoso Service Desk: **400 tickets**, **96 defective**, **120 defects**, **6 opportunities per ticket** - yield **76%**, DPU **0.30**, DPMO **50,000**, sigma level **~3.1**. These are the same figures used by the Case Study assessment, so your lab work is direct revision.
+
+The headline figures are in [scenario-key-figures.csv](scenario-key-figures.csv).
 
 ## Lab types
 
@@ -13,20 +28,20 @@ These labs follow the DMAIC roadmap end to end. Every lab builds on the same Con
 
 | # | Lab | DMAIC phase | Type |
 |---|-----|-------------|------|
-| 1 | [Yellow Belt Role, Certification Paths, and Improvement Scenario](lab-01-yellow-belt-role-certification-paths-and-improvement-scenari.md) | FOUNDATIONS | Core |
-| 2 | [Lean, Six Sigma, Waste, Voice of Customer, and Value](lab-02-lean-six-sigma-waste-voice-of-customer-and-value.md) | DEFINE | Core |
-| 3 | [SIPOC, Process Mapping, Handoffs, and SME Support](lab-03-sipoc-process-mapping-handoffs-and-sme-support.md) | DEFINE | Core |
-| 4 | [PDCA Small Improvement Project Charter](lab-04-pdca-small-improvement-project-charter.md) | DEFINE | Elective |
-| 5 | [DMAIC Overview, Problem Statement, Scope, and Stakeholders](lab-05-dmaic-overview-problem-statement-scope-and-stakeholders.md) | DEFINE | Core |
-| 6 | [Data Collection, KPIs, Check Sheets, and Basic Metrics](lab-06-data-collection-kpis-check-sheets-and-basic-metrics.md) | MEASURE | Core |
-| 7 | [Pareto, Run Charts, Variation, Yield, DPU, and DPMO](lab-07-pareto-run-charts-variation-yield-dpu-and-dpmo.md) | ANALYZE | Core |
-| 8 | [Root Cause Analysis with 5 Whys, Fishbone, and Evidence](lab-08-root-cause-analysis-with-5-whys-fishbone-and-evidence.md) | ANALYZE | Core |
-| 9 | [Countermeasures, 5S, Mistake Proofing, Standard Work, and Kaizen](lab-09-countermeasures-5s-mistake-proofing-standard-work-and-kaizen.md) | IMPROVE | Core |
-| 10 | [Control Plan, A3 Summary, Handover, and Certification Readiness](lab-10-control-plan-a3-summary-handover-and-certification-readiness.md) | CONTROL | Core |
-| 11 | [Affinity Diagram and Kano Analysis](lab-11-affinity-diagram-and-kano-analysis.md) | DEFINE | Elective |
-| 12 | [Value Stream Map and Takt Time](lab-12-value-stream-map-and-takt-time.md) | MEASURE | Elective |
-| 13 | [Solution Selection Matrix, Benchmarking, and FMEA](lab-13-solution-selection-matrix-benchmarking-and-fmea.md) | IMPROVE | Elective |
-| 14 | [Descriptive Statistics and Implementation Planning](lab-14-descriptive-statistics-and-implementation-planning.md) | CONTROL | Elective |
+| 1 | [Yellow Belt Role, Certification Paths, and Improvement Scenario](lab-01-yellow-belt-role-certification-paths-and-improvement-scenari/README.md) | FOUNDATIONS | Core |
+| 2 | [Lean, Six Sigma, Waste, Voice of Customer, and Value](lab-02-lean-six-sigma-waste-voice-of-customer-and-value/README.md) | DEFINE | Core |
+| 3 | [SIPOC, Process Mapping, Handoffs, and SME Support](lab-03-sipoc-process-mapping-handoffs-and-sme-support/README.md) | DEFINE | Core |
+| 4 | [PDCA Small Improvement Project Charter](lab-04-pdca-small-improvement-project-charter/README.md) | DEFINE | Elective |
+| 5 | [DMAIC Overview, Problem Statement, Scope, and Stakeholders](lab-05-dmaic-overview-problem-statement-scope-and-stakeholders/README.md) | DEFINE | Core |
+| 6 | [Data Collection, KPIs, Check Sheets, and Basic Metrics](lab-06-data-collection-kpis-check-sheets-and-basic-metrics/README.md) | MEASURE | Core |
+| 7 | [Pareto, Run Charts, Variation, Yield, DPU, and DPMO](lab-07-pareto-run-charts-variation-yield-dpu-and-dpmo/README.md) | ANALYZE | Core |
+| 8 | [Root Cause Analysis with 5 Whys, Fishbone, and Evidence](lab-08-root-cause-analysis-with-5-whys-fishbone-and-evidence/README.md) | ANALYZE | Core |
+| 9 | [Countermeasures, 5S, Mistake Proofing, Standard Work, and Kaizen](lab-09-countermeasures-5s-mistake-proofing-standard-work-and-kaizen/README.md) | IMPROVE | Core |
+| 10 | [Control Plan, A3 Summary, Handover, and Certification Readiness](lab-10-control-plan-a3-summary-handover-and-certification-readiness/README.md) | CONTROL | Core |
+| 11 | [Affinity Diagram and Kano Analysis](lab-11-affinity-diagram-and-kano-analysis/README.md) | DEFINE | Elective |
+| 12 | [Value Stream Map and Takt Time](lab-12-value-stream-map-and-takt-time/README.md) | MEASURE | Elective |
+| 13 | [Solution Selection Matrix, Benchmarking, and FMEA](lab-13-solution-selection-matrix-benchmarking-and-fmea/README.md) | IMPROVE | Elective |
+| 14 | [Descriptive Statistics and Implementation Planning](lab-14-descriptive-statistics-and-implementation-planning/README.md) | CONTROL | Elective |
 
 ## The interactive toolkit
 

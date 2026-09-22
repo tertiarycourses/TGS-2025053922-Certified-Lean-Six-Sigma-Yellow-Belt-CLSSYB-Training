@@ -1,6 +1,6 @@
 # Certified Lean Six Sigma Yellow Belt (CLSSYB) Training — Learner Guide
 
-**WSQ Course Code:** TGS-2025053922  |  **Conducted by:** Tertiary Infotech Academy Pte Ltd (UEN 201200696W)  |  **Version v7 · 20 July 2026**
+**WSQ Course Code:** TGS-2025053922  |  **Conducted by:** Tertiary Infotech Academy Pte Ltd (UEN 201200696W)  |  **Version v8 · 23 September 2026**
 
 ## Contents
 
@@ -96,6 +96,21 @@ Five browser-based tools are used during the labs. No installation, licence or s
 - Elective labs extend the same scenario with additional Lean Six Sigma tools; complete them if time allows or as post-course practice.
 - All labs build on the same Contoso Service Desk scenario, so outputs carry forward from one lab to the next.
 
+**The Contoso Service Desk data set**
+
+Every lab works from one real-shaped data set: two weeks of service desk activity — 400 tickets, of which 96 contained at least one defect, with 120 defects recorded across 6 defect opportunities per ticket. Mean assignment time is 55 minutes (median 46) against a 30-minute improvement goal.
+
+These are the same figures the Case Study assessment uses, so the numbers you calculate in the labs are the numbers you will be assessed on.
+
+- Yield 76% · DPU 0.30 · DPO 0.0500 · DPMO 50,000 · sigma level ~3.1.
+- Pareto vital few: Delayed assignment (40%) and Missing information (25%) — 65% of all defects.
+- The run chart hides a genuine special cause: performance shifts from day 7, when the ITSM platform was migrated.
+- Each lab folder carries its own data/ (mock data to analyse) and templates/ (worksheets to complete).
+
+**Where to find each lab's files**
+
+Each lab is a self-contained folder under labs/ — labs/lab-NN-<name>/ — containing README.md (the worksheet), data/ (the CSV mock data) and templates/ (the blank CSV worksheets you fill in). Open the CSV files in Excel, Google Sheets or LibreOffice Calc, and always work on a copy.
+
 **Conventions used in every lab**
 
 - Each lab states its objective, the deliverable you produce, the steps, and a check to confirm you are done.
@@ -136,11 +151,20 @@ A Yellow Belt responsibility table and a selected improvement scenario.   (Tools
 4. Test your scenario against the 'good project' criteria — day-to-day work, manageable, aligned to business goals, data available.
 5. Record why a Yellow Belt supports rather than leads this improvement.
 
+**Data and worksheets for this lab**
+
+- data/service-desk-tickets.csv — 400 rows of mock data (ticket_id, date, ticket_type, channel, assigned_queue, agent, assignment_time_min, met_30min_goal, defect_count, defect_categories, reopened)
+- templates/belt-pathway-comparison.csv — worksheet to complete (belt, typical_role, training_days, leads_or_supports, typical_project_scope)
+- templates/project-selection-criteria.csv — worksheet to complete (criterion, does_the_scenario_meet_it, evidence)
+- templates/yellow-belt-responsibilities.csv — worksheet to complete (responsibility, your_contribution, belt_that_leads_it)
+
+The scenario brief and the two weeks of ticket data are in data/.
+
 **Check your work**
 
 You can state the Yellow Belt role in one sentence and justify your scenario against all four selection criteria.
 
-> **Note:** The full worksheet for this lab is in labs/lab-01-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-01-yellow-belt-role-certification-paths-and-improvement-scenari/ — open README.md in that folder.
 
 ---
 
@@ -178,11 +202,20 @@ A VOC-to-CTQ translation table, a value-added analysis, and a waste walk log.   
 5. Distinguish a defect (output fails CTQ) from waste (effort the customer will not pay for).
 6. Identify which single waste type appears most often in your scenario.
 
+**Data and worksheets for this lab**
+
+- data/voice-of-customer.csv — 10 rows of mock data (id, customer_statement, source, date)
+- data/waste-walk-observations.csv — 10 rows of mock data (obs_id, observation, process_step, time_lost_min, waste_type)
+- templates/value-added-analysis.csv — worksheet to complete (step_no, activity, VA_BVA_NVA, justification)
+- templates/voc-to-ctq.csv — worksheet to complete (voc_id, customer_statement, need, ctq_requirement, measure, target)
+
+Tag every waste-walk observation with one of the eight DOWNTIME waste types.
+
 **Check your work**
 
 Every CTQ is measurable with a target, and each waste observation is tagged to one of the eight waste types.
 
-> **Note:** The full worksheet for this lab is in labs/lab-02-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-02-lean-six-sigma-waste-voice-of-customer-and-value/ — open README.md in that folder.
 
 ---
 
@@ -211,11 +244,19 @@ A completed SIPOC and a detailed process map with pain points marked.   (Tools a
 5. Tag pain points on the steps — waiting, rework loop, unclear ownership, duplicate entry or missing decision rule (at least three).
 6. Prepare SME notes for the Green Belt: what you observed and what needs validation.
 
+**Data and worksheets for this lab**
+
+- data/process-steps.csv — 7 rows of mock data (step_no, activity, actor, system, process_time_min, wait_time_min, handoff_to)
+- templates/handoff-register.csv — worksheet to complete (handoff_no, from_actor, to_actor, trigger, owner_both_sides, pain_point)
+- templates/sipoc.csv — worksheet to complete (suppliers, inputs, process_step, outputs, customers)
+
+data/process-steps.csv holds the as-is step, actor, system and timing data.
+
 **Check your work**
 
 Run 'Check my SIPOC' in the tool — all five columns populated, 5-7 steps, at least three pain points, and every handoff owned on both sides.
 
-> **Note:** The full worksheet for this lab is in labs/lab-03-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-03-sipoc-process-mapping-handoffs-and-sme-support/ — open README.md in that folder.
 
 ---
 
@@ -239,11 +280,17 @@ A one-page PDCA charter with problem statement, goal, scope and success measure.
 5. Identify stakeholders and the decision you will make after the Check phase.
 6. Confirm the improvement is small enough to test within two weeks.
 
+**Data and worksheets for this lab**
+
+- templates/pdca-charter.csv — worksheet to complete (section, content)
+
+Baseline figures for the goal statement come from data/daily-summary.csv.
+
 **Check your work**
 
 Your goal statement contains a metric, a baseline, a target and a date, and your problem statement names no solution.
 
-> **Note:** The full worksheet for this lab is in labs/lab-04-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-04-pdca-small-improvement-project-charter/ — open README.md in that folder.
 
 ---
 
@@ -267,11 +314,16 @@ A DMAIC phase table, refined problem statement, stakeholder map and benefit esti
 5. Link the problem back to the CTQ requirements captured in Lab 2.
 6. Confirm which DMAIC phases a Yellow Belt can support most strongly.
 
+**Data and worksheets for this lab**
+
+- templates/dmaic-phase-table.csv — worksheet to complete (phase, purpose, key_deliverable, yellow_belt_support_role)
+- templates/stakeholder-map.csv — worksheet to complete (stakeholder, interest, influence_H_M_L, interest_H_M_L, engagement_approach)
+
 **Check your work**
 
 Your problem statement passes the 'no solution named' test and every stakeholder has a defined engagement approach.
 
-> **Note:** The full worksheet for this lab is in labs/lab-05-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-05-dmaic-overview-problem-statement-scope-and-stakeholders/ — open README.md in that folder.
 
 ---
 
@@ -293,11 +345,17 @@ An Affinity Diagram of clustered VOC themes and a Kano classification table.   (
 3. Classify each requirement as Must-Be, One-Dimensional or Delighter.
 4. Plot the requirements on the Kano diagram and identify where to invest first.
 
+**Data and worksheets for this lab**
+
+- data/voice-of-customer.csv — 10 rows of mock data (id, customer_statement, source, date)
+- templates/affinity-groups.csv — worksheet to complete (voc_id, statement, affinity_group)
+- templates/kano-classification.csv — worksheet to complete (requirement, kano_class_MustBe_OneDim_Delighter, why, invest_first)
+
 **Check your work**
 
 Every VOC note sits in exactly one named affinity group and carries a Kano classification.
 
-> **Note:** The full worksheet for this lab is in labs/lab-11-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-11-affinity-diagram-and-kano-analysis/ — open README.md in that folder.
 
 ---
 
@@ -335,11 +393,20 @@ A data collection plan, an operational definition set and a working check sheet.
 5. Plan sampling: how many, how often, by whom — and identify possible bias.
 6. State which KPI best reflects the customer pain point from your VOC work.
 
+**Data and worksheets for this lab**
+
+- data/daily-summary.csv — 10 rows of mock data (date, tickets, mean_assignment_min, median_assignment_min, defects, missed_30min_goal)
+- data/service-desk-tickets.csv — 400 rows of mock data (ticket_id, date, ticket_type, channel, assigned_queue, agent, assignment_time_min, met_30min_goal, defect_count, defect_categories, reopened)
+- templates/check-sheet.csv — worksheet to complete (date, ticket_id, ticket_type, assignment_time_min, defect_category, rework_required, notes)
+- templates/data-collection-plan.csv — worksheet to complete (kpi, operational_definition, data_type, data_source, frequency, who_collects, bias_risk)
+
+data/service-desk-tickets.csv is the full two-week extract (400 tickets).
+
 **Check your work**
 
 Two different people reading your operational definition would record the same value for the same event.
 
-> **Note:** The full worksheet for this lab is in labs/lab-06-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-06-data-collection-kpis-check-sheets-and-basic-metrics/ — open README.md in that folder.
 
 ---
 
@@ -366,11 +433,17 @@ A value stream map with lead time, process time and a calculated takt time.   (T
 3. Calculate takt time = available working time / customer demand.
 4. Compare cycle time against takt time to identify the bottleneck step.
 
+**Data and worksheets for this lab**
+
+- data/process-steps.csv — 7 rows of mock data (step_no, activity, actor, system, process_time_min, wait_time_min, handoff_to)
+- templates/takt-time.csv — worksheet to complete (input, value)
+- templates/value-stream-map.csv — worksheet to complete (step_no, activity, process_time_min, wait_time_min, VA_or_NVA)
+
 **Check your work**
 
 Your lead time equals the sum of all process and wait times, and takt time is expressed per unit.
 
-> **Note:** The full worksheet for this lab is in labs/lab-12-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-12-value-stream-map-and-takt-time/ — open README.md in that folder.
 
 ---
 
@@ -420,11 +493,22 @@ A Pareto chart, a run chart and calculated yield, DPU, DPO, DPMO and sigma level
 7. Convert DPMO to a sigma level and interpret what it says about the process.
 8. Distinguish common-cause from special-cause variation and why the response differs.
 
+**Data and worksheets for this lab**
+
+- data/assignment-times.csv — 400 rows of mock data (date, ticket_id, assignment_time_min)
+- data/daily-summary.csv — 10 rows of mock data (date, tickets, mean_assignment_min, median_assignment_min, defects, missed_30min_goal)
+- data/defect-counts.csv — 6 rows of mock data (defect_category, count)
+- data/service-desk-tickets.csv — 400 rows of mock data (ticket_id, date, ticket_type, channel, assigned_queue, agent, assignment_time_min, met_30min_goal, defect_count, defect_categories, reopened)
+- templates/pareto-table.csv — worksheet to complete (defect_category, count, percent, cumulative_percent)
+- templates/process-metrics.csv — worksheet to complete (metric, formula, your_calculation)
+
+Upload data/assignment-times.csv to NovaSPC for the run chart. Worked answers are in solution/pareto-table-answers.csv and solution/process-metrics-answers.csv — attempt the lab before opening them.
+
 **Check your work**
 
 Your cumulative percentage column reaches 100%, and you can state the sigma level with the DPMO it came from.
 
-> **Note:** The full worksheet for this lab is in labs/lab-07-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-07-pareto-run-charts-variation-yield-dpu-and-dpmo/ — open README.md in that folder.
 
 ---
 
@@ -459,11 +543,22 @@ A completed 5 Whys chain, a Fishbone diagram and an evidence-tested cause shortl
 6. Test each shortlisted cause against your Lab 7 data — does the evidence support it?
 7. State why the team must not jump straight to solutions.
 
+**Data and worksheets for this lab**
+
+- data/daily-summary.csv — 10 rows of mock data (date, tickets, mean_assignment_min, median_assignment_min, defects, missed_30min_goal)
+- data/defect-counts.csv — 6 rows of mock data (defect_category, count)
+- data/root-cause-evidence.csv — 8 rows of mock data (evidence_id, observation, source, supports_cause)
+- templates/cause-evidence-test.csv — worksheet to complete (candidate_cause, evidence_that_supports_it, evidence_that_contradicts_it, verdict)
+- templates/fishbone-causes.csv — worksheet to complete (category, possible_cause, supported_by_evidence)
+- templates/five-whys.csv — worksheet to complete (why_level, question, answer, evidence_needed, evidence_found)
+
+Test every candidate cause against the Lab 7 data before shortlisting it.
+
 **Check your work**
 
 Each shortlisted root cause is supported by named evidence, and your 5 Whys chain ends at something you can act on.
 
-> **Note:** The full worksheet for this lab is in labs/lab-08-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-08-root-cause-analysis-with-5-whys-fishbone-and-evidence/ — open README.md in that folder.
 
 ---
 
@@ -502,11 +597,16 @@ A prioritised countermeasure set with a 5S plan, a poka-yoke design and standard
 6. Plan a Kaizen event or pilot to test the countermeasure at small scale first.
 7. Distinguish a containment countermeasure from a permanent solution.
 
+**Data and worksheets for this lab**
+
+- templates/5s-plan.csv — worksheet to complete (S, what_it_means_here, action, owner)
+- templates/countermeasures.csv — worksheet to complete (root_cause, countermeasure, type_5S_pokayoke_standardwork, impact_H_M_L, effort_H_M_L, expected_effect)
+
 **Check your work**
 
 Every countermeasure traces back to a proven root cause, and your poka-yoke prevents rather than detects the error.
 
-> **Note:** The full worksheet for this lab is in labs/lab-09-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-09-countermeasures-5s-mistake-proofing-standard-work-and-kaizen/ — open README.md in that folder.
 
 ---
 
@@ -529,11 +629,17 @@ A scored solution selection matrix, a benchmarking summary and an FMEA with RPN.
 4. Build an FMEA: failure mode, effect, cause, then score Severity, Occurrence and Detection.
 5. Calculate RPN = S x O x D and address the highest-RPN failure modes first.
 
+**Data and worksheets for this lab**
+
+- data/candidate-solutions.csv — 5 rows of mock data (solution_id, candidate_solution, est_cost, est_effort_days)
+- templates/fmea.csv — worksheet to complete (process_step, failure_mode, effect, cause, severity_1_10, occurrence_1_10, detection_1_10, RPN, action)
+- templates/solution-selection-matrix.csv — worksheet to complete (solution, impact_w5, cost_w3, ease_w2, weighted_score, rank)
+
 **Check your work**
 
 Your matrix ranks solutions by weighted score, and every FMEA row has an RPN and an action for the highest scores.
 
-> **Note:** The full worksheet for this lab is in labs/lab-13-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-13-solution-selection-matrix-benchmarking-and-fmea/ — open README.md in that folder.
 
 ---
 
@@ -571,11 +677,20 @@ A control plan, an A3 one-page summary, a handover checklist and a readiness pla
 5. Prepare the handover checklist so the process owner can sustain it without you.
 6. Complete your personal certification readiness plan — which topics need most review.
 
+**Data and worksheets for this lab**
+
+- data/assignment-times.csv — 400 rows of mock data (date, ticket_id, assignment_time_min)
+- templates/a3-summary.csv — worksheet to complete (a3_section, content)
+- templates/control-plan.csv — worksheet to complete (process_step, metric, target, owner, check_frequency, response_plan)
+- templates/handover-checklist.csv — worksheet to complete (handover_item, accepted_by, date, notes)
+
+Re-plot data/assignment-times.csv in NovaSPC to show the post-improvement position.
+
 **Check your work**
 
 Every control plan row has a named owner and a reaction plan, and your A3 fits on one page.
 
-> **Note:** The full worksheet for this lab is in labs/lab-10-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-10-control-plan-a3-summary-handover-and-certification-readiness/ — open README.md in that folder.
 
 ---
 
@@ -597,11 +712,21 @@ A descriptive statistics summary and a dated implementation plan.   (Tools and t
 3. Explain what the mean-versus-median difference reveals about outliers and skew.
 4. Write the implementation plan: action, owner, date, barriers and mitigation.
 
+**Data and worksheets for this lab**
+
+- data/assignment-times.csv — 400 rows of mock data (date, ticket_id, assignment_time_min)
+- data/daily-summary.csv — 10 rows of mock data (date, tickets, mean_assignment_min, median_assignment_min, defects, missed_30min_goal)
+- data/service-desk-tickets.csv — 400 rows of mock data (ticket_id, date, ticket_type, channel, assigned_queue, agent, assignment_time_min, met_30min_goal, defect_count, defect_categories, reopened)
+- templates/descriptive-statistics.csv — worksheet to complete (statistic, formula_or_function, your_value)
+- templates/implementation-plan.csv — worksheet to complete (action, owner, start_date, due_date, barrier, mitigation)
+
+data/assignment-times.csv is the raw column for the statistics.
+
 **Check your work**
 
 You can explain why the mean and median differ in your data, and every implementation action has an owner and a date.
 
-> **Note:** The full worksheet for this lab is in labs/lab-14-*.md.
+> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-14-descriptive-statistics-and-implementation-planning/ — open README.md in that folder.
 
 ---
 

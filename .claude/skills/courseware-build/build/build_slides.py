@@ -17,6 +17,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 import course_data as C
+import lab_dataset as DS
+import lab_files as LF
 from data_domain1 import DOMAIN1
 from data_domain2 import DOMAIN2
 from data_domain3 import DOMAIN3
@@ -69,7 +71,7 @@ d.trainer_slide("YOUR TRAINER · GENERAL", "Your Trainer",
                 "General Trainer template —\nto be completed by the trainer",
                 [("Name", ""), ("Title / Designation", ""), ("Qualifications", ""),
                  ("Areas of expertise", ""), ("Training & industry experience", ""), ("Contact", "")],
-                initials="?", accent=GREY, photo=asset("trainer_template.png"))
+                initials="?", accent=GREY)   # no photo: the two PNGs are 16:9 slide captures, not portraits
 d.trainer_slide("YOUR TRAINER", C.TRAINER,
                 "Principal Trainer\nTertiary Infotech Academy Pte. Ltd.",
                 [("Role", "Principal Trainer, Tertiary Infotech Academy Pte. Ltd."),
@@ -77,7 +79,7 @@ d.trainer_slide("YOUR TRAINER", C.TRAINER,
                  ("Delivers", "WSQ courses on Lean Six Sigma, quality management and data analytics."),
                  ("Experience", "Process improvement across manufacturing, service and technology sectors."),
                  ("Founder", "Founder and lead instructor at Tertiary Infotech / Tertiary Courses.")],
-                initials="AA", accent=BLUE, photo=asset("trainer_profile.png"))
+                initials="AA", accent=BLUE)  # initials avatar until a real portrait asset is supplied
 
 d.content("Let's Know Each Other", [
     "Your name, organisation and role.",
@@ -183,6 +185,34 @@ d.flow_h("Assessment Flow", [
 # ============================================================ FOUNDATIONS
 concepts.foundations(d)
 
+# ---------------- the shared lab data set (one scenario, one set of numbers) ----
+d.tile_grid("The Contoso Service Desk Data Set", [
+    ("One scenario, one data set",
+     f"Every lab works from the same two weeks of service desk activity: {DS.N} tickets, "
+     f"{DS.DEFECTIVE} of them defective, {DS.TOTAL_DEFECTS} defects in total."),
+    ("Defect opportunities",
+     f"Each ticket carries {DS.OPP} defect opportunities — the basis for DPO and DPMO."),
+    ("Baseline performance",
+     f"Yield {DS.YIELD*100:.0f}% · DPU {DS.DPU:.2f} · DPMO {int(DS.DPMO):,} · sigma level ~{DS.SIGMA}."),
+    ("Speed of assignment",
+     f"Mean {DS.MEAN_MIN} min, median {DS.MEDIAN_MIN} min, against a {DS.TARGET_MIN}-minute goal — "
+     "the gap between mean and median is the story."),
+    ("Where the files are",
+     "Each lab folder holds data/ (the mock data you analyse) and templates/ "
+     "(the blank worksheets you complete)."),
+    ("Why it matters",
+     "These are the same figures as the Case Study assessment — your lab work is your revision."),
+], kicker="LAB DATA · labs/", cols=2, size=13)
+
+d.tile_grid("What the Baseline Data Already Tells You", [
+    ("Delayed assignment · 48", "40% of all defects — the single largest category."),
+    ("Missing information · 30", "25% — together with delays this is the vital few: 65%."),
+    ("Wrong queue · 18", "15% — tickets bouncing between teams."),
+    ("Reopened ticket · 12", "10% — the fix did not hold the first time."),
+    ("Duplicate ticket · 8", "6.7% — the same issue logged twice."),
+    ("Unclear status · 4", "3.3% — the trivial many, by count."),
+], kicker="PARETO PREVIEW · ANALYSED IN LAB 7", cols=3, size=12)
+
 # ============================================================ DMAIC PHASES + LABS
 PHASE_FN = {
     1: concepts.define_phase,
@@ -205,6 +235,30 @@ def render_labs(acts, phase_label):
         short = a["title"][:38]
         for i, (instr, cmd) in enumerate(steps, 1):
             d.step_slide(f"LAB {a['num']} · {short}", a["title"], i, total, instr, cmd)
+        data_f, tmpl_f, _ = LF.files_for(a["num"])
+        if data_f or tmpl_f:
+            def cols(header, budget):
+                """Join column names, dropping whole columns that do not fit (never mid-word)."""
+                out, used = [], 0
+                for c in (str(x) for x in header):
+                    if used + len(c) + 2 > budget:
+                        out.append(f"+{len(header)-len(out)} more")
+                        break
+                    out.append(c)
+                    used += len(c) + 2
+                return ", ".join(out)
+
+            tiles = []
+            for name in sorted(data_f):
+                rows = data_f[name]
+                tiles.append((f"data/{name}",
+                              f"{len(rows)-1} rows · {cols(rows[0], 62)}"))
+            for name in sorted(tmpl_f):
+                tiles.append((f"templates/{name}",
+                              "Worksheet to complete · " + cols(tmpl_f[name][0], 52)))
+            d.tile_grid(f"Lab {a['num']} — Your Data Files", tiles,
+                        kicker=f"LAB {a['num']} · labs/{LF.dirname(a['num'], a['title'])}/",
+                        cols=1, size=13)
         d.test_slide(a["title"], a["test"], kicker=f"LAB {a['num']} · VERIFY")
 
 

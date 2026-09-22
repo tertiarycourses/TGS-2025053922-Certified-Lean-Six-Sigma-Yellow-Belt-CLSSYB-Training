@@ -15,6 +15,8 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 
 HERE=os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0,HERE)
 import course_data as C
+import lab_dataset as D
+import lab_files as LF
 from data_domain1 import DOMAIN1; from data_domain2 import DOMAIN2
 from data_domain3 import DOMAIN3
 ACT=DOMAIN1+DOMAIN2+DOMAIN3
@@ -169,7 +171,8 @@ prodoc.add_version_control(doc,[
   "NovaSPC) integrated into the Analyze labs; slide references added to the schedule.",C.TRAINER),
  ("5", C.VERSION_DATE, "Integrated the SIPOC & Process Map Builder (alfredang.github.io/sipoc/) into Lab 3 and elective Lab 12, with a tool walkthrough added to the Define phase and the online toolkit slide updated to list all five tools.", C.TRAINER),
  ("6", C.VERSION_DATE, "Fixed clipped headings: slide titles now auto-fit to a single line so long lab titles can no longer overprint the LAB/ELECTIVE chips beneath them.", C.TRAINER),
- ("7", C.VERSION_DATE, "Table of contents restored to a live, updatable Word field (previously flattened to static text), so it refreshes on open or F9 while still rendering correctly in the distributed PDF.", C.TRAINER),
+ ("7", "20 July 2026", "Table of contents restored to a live, updatable Word field (previously flattened to static text), so it refreshes on open or F9 while still rendering correctly in the distributed PDF.", C.TRAINER),
+  ("8", C.VERSION_DATE, "Labs restructured into one self-contained folder per lab, each with its own mock data (data/*.csv) and blank worksheets (templates/*.csv). The Contoso Service Desk data set is now generated from a single verified source and reconciles exactly with the Case Study assessment figures (400 tickets, 96 defective, 120 defects, yield 76%, DPU 0.30, DPMO 50,000). Slides, Lesson Plan and Learner Guide updated to reference the lab data.", C.TRAINER),
 ])
 prodoc.add_toc(doc)
 
@@ -186,20 +189,36 @@ info=[("Course Title",C.TITLE),("WSQ Course Reference",C.COURSE_CODE),
       ("Trainer",C.TRAINER)]
 t=doc.add_table(rows=0,cols=2); t.style="Table Grid"
 for k,v in info:
-    c=t.add_row().cells; c[0].text=""; r=c[0].paragraphs[0].add_run(k); r.bold=True; r.font.size=Pt(10)
+    c=t.add_row().cells; c[0].text=""; r=c[0].paragraphs[0].add_run(k); r.bold=True; r.font.size=Pt(11)
     prodoc._shade_cell(c[0],TOPIC_FILL)
-    c[1].text=""; c[1].paragraphs[0].add_run(v).font.size=Pt(10)
+    c[1].text=""; c[1].paragraphs[0].add_run(v).font.size=Pt(11)
 
 H("Learning Outcomes",1)
 doc.add_paragraph("On completion of this course, learners will be able to:")
 for lo in C.LEARNING_OUTCOMES:
-    p=doc.add_paragraph(style="List Bullet"); p.add_run(lo).font.size=Pt(10.5)
+    p=doc.add_paragraph(style="List Bullet"); p.add_run(lo).font.size=Pt(11)
+
+H("Training Resources and Lab Data",1)
+doc.add_paragraph("Each lab is a self-contained folder under labs/ — labs/lab-NN-<name>/ — holding the "
+                  "worksheet (README.md), the mock data the learners analyse (data/*.csv) and the blank "
+                  "worksheets they complete (templates/*.csv).")
+for a in [
+    f"Shared data set: two weeks of Contoso Service Desk activity — {D.N} tickets, {D.DEFECTIVE} defective, "
+    f"{D.TOTAL_DEFECTS} defects, {D.OPP} opportunities per ticket.",
+    f"Baseline performance: yield {D.YIELD*100:.0f}%, DPU {D.DPU:.2f}, DPMO {int(D.DPMO):,}, "
+    f"sigma level ~{D.SIGMA}; mean assignment time {D.MEAN_MIN} min (median {D.MEDIAN_MIN}) "
+    f"against a {D.TARGET_MIN}-minute goal.",
+    "These are the same figures as the Case Study assessment, so lab work is direct revision.",
+    "Trainer note: the Lab 7 worked answers are in labs/lab-07-*/solution/ — do not release before learners attempt it.",
+    "Learners need a spreadsheet application (Excel, Google Sheets or LibreOffice Calc) and a browser.",
+]:
+    p=doc.add_paragraph(style="List Bullet"); p.add_run(a).font.size=Pt(11)
 
 H("Assessment",1)
 for a in [C.ASSESSMENT["written"],C.ASSESSMENT["practical"],
           "Format: Open Book — course slides, Learner Guide and approved materials only.",
           "Final assessment is conducted on Day 2 from 4:00 pm.",C.ASSESSMENT["note"]]:
-    p=doc.add_paragraph(style="List Bullet"); p.add_run(a).font.size=Pt(10.5)
+    p=doc.add_paragraph(style="List Bullet"); p.add_run(a).font.size=Pt(11)
 
 def set_cell(cell,text,bold=False,size=9.5,color=None,fill=None,align=None):
     cell.text=""; p=cell.paragraphs[0]

@@ -10,7 +10,11 @@ import glob
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+import csv as _csv
+import shutil
 import course_data as C
+import lab_dataset as D
+import lab_files as LF
 from data_domain1 import DOMAIN1
 from data_domain2 import DOMAIN2
 from data_domain3 import DOMAIN3
@@ -42,6 +46,8 @@ TOOLS = {
     "novaspc": ("NovaSPC", "https://alfredang.github.io/novaspc/"),
 }
 
+REGISTER_URL = ("https://www.tertiarycourses.com.sg/wsq-certified-lean-six-sigma-yellow-belt-clssyb-training.html")
+
 SCENARIO = (
     "Contoso Service Desk handles employee IT requests. Employees complain that tickets take too long "
     "to be assigned, that they must keep chasing for status, and that agents apply different definitions "
@@ -49,10 +55,20 @@ SCENARIO = (
 )
 
 
-def slug(title):
-    t = title.replace("Elective — ", "")
-    t = re.sub(r"[^a-zA-Z0-9 ]", "", t).lower()
-    return "-".join(t.split())[:60]
+DATA_BRIEF = (
+    f"**The data.** Two weeks of ticket data have been collected: **{D.N} tickets**, of which "
+    f"**{D.DEFECTIVE} contained at least one defect**, with **{D.TOTAL_DEFECTS} defects** recorded in "
+    f"total across **{D.OPP} defect opportunities per ticket**. Mean assignment time is "
+    f"**{D.MEAN_MIN} minutes** against a **{D.TARGET_MIN}-minute** improvement goal. "
+    "The files in this lab's `data/` folder are that extract."
+)
+
+
+slug = LF.slug
+
+
+def dirname(a):
+    return LF.dirname(a["num"], a["title"])
 
 
 def lab_md(a):
@@ -79,12 +95,40 @@ def lab_md(a):
     out.append("")
     out.append(SCENARIO)
     out.append("")
+    out.append(DATA_BRIEF)
+    out.append("")
     out.append("## What you will build")
     out.append("")
     out.append(a["build"])
     out.append("")
     out.append(f"**Tools and techniques:** {a['services']}")
     out.append("")
+    data, tmpl, note = LF.files_for(a["num"])
+    if data or tmpl:
+        out.append("## Files in this lab folder")
+        out.append("")
+        if data:
+            out.append("**`data/` — the mock data you analyse:**")
+            out.append("")
+            for name in sorted(data):
+                rows = data[name]
+                out.append(f"- [`data/{name}`](data/{name}) — {len(rows)-1} rows · "
+                           f"columns: {', '.join(str(c) for c in rows[0])}")
+            out.append("")
+        if tmpl:
+            out.append("**`templates/` — the worksheets you fill in:**")
+            out.append("")
+            for name in sorted(tmpl):
+                rows = tmpl[name]
+                out.append(f"- [`templates/{name}`](templates/{name}) — "
+                           f"columns: {', '.join(str(c) for c in rows[0])}")
+            out.append("")
+        out.append("Open the CSV files in Excel, LibreOffice Calc or Google Sheets. "
+                   "Work on a copy so the originals stay clean for revision.")
+        out.append("")
+        if note:
+            out.append(f"> {note}")
+            out.append("")
     # any tool URLs used by this lab
     used = []
     for _, cmd in a["steps"]:
@@ -139,6 +183,25 @@ def readme_md():
     out.append("These labs follow the DMAIC roadmap end to end. Every lab builds on the same Contoso "
                "Service Desk scenario, so your outputs accumulate into one complete improvement package.")
     out.append("")
+    out.append("## How each lab is organised")
+    out.append("")
+    out.append("Each lab is a self-contained folder:")
+    out.append("")
+    out.append("```")
+    out.append("lab-NN-<name>/")
+    out.append("  README.md     the lab worksheet - objective, steps and the check")
+    out.append("  data/         the mock data you analyse (CSV - open in Excel or Sheets)")
+    out.append("  templates/    blank worksheets you fill in (CSV)")
+    out.append("```")
+    out.append("")
+    out.append(f"All the data describes one fortnight at the Contoso Service Desk: **{D.N} tickets**, "
+               f"**{D.DEFECTIVE} defective**, **{D.TOTAL_DEFECTS} defects**, "
+               f"**{D.OPP} opportunities per ticket** - yield **{D.YIELD*100:.0f}%**, DPU **{D.DPU:.2f}**, "
+               f"DPMO **{int(D.DPMO):,}**, sigma level **~{D.SIGMA}**. These are the same figures used by "
+               "the Case Study assessment, so your lab work is direct revision.")
+    out.append("")
+    out.append("The headline figures are in [scenario-key-figures.csv](scenario-key-figures.csv).")
+    out.append("")
     out.append("## Lab types")
     out.append("")
     out.append("- **Core** — completed by everyone; maps directly to the assessment.")
@@ -151,7 +214,7 @@ def readme_md():
     out.append("|---|-----|-------------|------|")
     files = {}
     for a in ACT:
-        fn = f"lab-{a['num']:02d}-{slug(a['title'])}.md"
+        fn = f"{dirname(a)}/README.md"
         files[a["num"]] = fn
         kind = "Elective" if a.get("elective") else "Core"
         title = a["title"].replace("Elective — ", "")
@@ -252,17 +315,83 @@ def tools_md():
 
 
 # ---------------------------------------------------------------- write
+def write_csv(path, rows):
+    with open(path, "w", newline="") as f:
+        w = _csv.writer(f)
+        for r in rows:
+            w.writerow(r)
+
+
 os.makedirs(LABS, exist_ok=True)
+# clear the previous flat layout and any stale lab folders
 for old in glob.glob(os.path.join(LABS, "lab-*.md")):
     os.remove(old)
+for old in glob.glob(os.path.join(LABS, "lab-*")):
+    if os.path.isdir(old):
+        shutil.rmtree(old)
 
 readme, files = readme_md()
 written = 0
+csv_written = 0
 for a in ACT:
-    path = os.path.join(LABS, files[a["num"]])
-    with open(path, "w") as f:
+    folder = os.path.join(LABS, dirname(a))
+    os.makedirs(folder, exist_ok=True)
+    with open(os.path.join(folder, "README.md"), "w") as f:
         f.write(lab_md(a))
     written += 1
+    data, tmpl, _ = LF.files_for(a["num"])
+    if data:
+        os.makedirs(os.path.join(folder, "data"), exist_ok=True)
+        for name, rows in data.items():
+            write_csv(os.path.join(folder, "data", name), rows)
+            csv_written += 1
+    if tmpl:
+        os.makedirs(os.path.join(folder, "templates"), exist_ok=True)
+        for name, rows in tmpl.items():
+            write_csv(os.path.join(folder, "templates", name), rows)
+            csv_written += 1
+
+# shared scenario brief + the worked answer key for the metrics lab
+write_csv(os.path.join(LABS, "scenario-key-figures.csv"),
+          [["field", "value"],
+           ["Tickets (units)", D.N],
+           ["Defective tickets", D.DEFECTIVE],
+           ["Total defects", D.TOTAL_DEFECTS],
+           ["Opportunities per unit", D.OPP],
+           ["Yield %", round(D.YIELD * 100, 1)],
+           ["DPU", round(D.DPU, 2)],
+           ["DPO", round(D.DPO, 4)],
+           ["DPMO", int(D.DPMO)],
+           ["Sigma level", D.SIGMA],
+           ["Mean assignment time (min)", D.MEAN_MIN],
+           ["Median assignment time (min)", D.MEDIAN_MIN],
+           ["Std dev assignment time (min)", D.SD_MIN],
+           ["Improvement goal (min)", D.TARGET_MIN]])
+csv_written += 1
+
+# worked answer key for the metrics lab — learners self-check after attempting it
+_lab7 = [a for a in ACT if a["num"] == 7][0]
+_sol = os.path.join(LABS, dirname(_lab7), "solution")
+os.makedirs(_sol, exist_ok=True)
+write_csv(os.path.join(_sol, "pareto-table-answers.csv"),
+          [["defect_category", "count", "percent", "cumulative_percent"]] +
+          [[n, c, f"{pc}%", f"{cum}%"] for n, c, pc, cum in D.pareto()])
+write_csv(os.path.join(_sol, "process-metrics-answers.csv"),
+          [["metric", "formula", "value"],
+           ["Units", "Total tickets", D.N],
+           ["Defective units", "Tickets with >= 1 defect", D.DEFECTIVE],
+           ["Total defects", "Sum of all defects", D.TOTAL_DEFECTS],
+           ["Opportunities per unit", "Given", D.OPP],
+           ["Yield %", "(Units - Defective) / Units x 100", f"{D.YIELD*100:.0f}%"],
+           ["DPU", "Defects / Units", f"{D.DPU:.2f}"],
+           ["DPO", "Defects / (Units x Opportunities)", f"{D.DPO:.4f}"],
+           ["DPMO", "DPO x 1,000,000", f"{int(D.DPMO):,}"],
+           ["Sigma level", "DPMO conversion (1.5 sigma shift)", f"~{D.SIGMA}"],
+           ["Vital few", "Top 2 categories, cumulative", "65% - Delayed assignment + Missing information"],
+           ["Run chart signal", "Shift rule",
+            "Mean rises from ~44 min (days 1-6) to ~72 min (days 7-10): a SHIFT (special cause) "
+            "coinciding with the 9 June ITSM migration"]])
+csv_written += 2
 
 with open(os.path.join(LABS, "README.md"), "w") as f:
     f.write(readme)
@@ -276,18 +405,82 @@ core = sum(1 for a in ACT if not a.get("elective"))
 def repo_readme(files):
     n = len(ACT)
     out = []
-    out.append(f"# {C.COURSE_CODE} - {C.TITLE}")
+    # ---------------- centred hero ----------------
+    out.append('<div align="center">')
     out.append("")
-    out.append(f"> **Course:** WSQ - {C.TITLE}  ")
-    out.append(f"> **Course Code:** {C.COURSE_CODE}  ")
-    out.append("> **Register here:** https://www.tertiarycourses.com.sg/wsq-certified-lean-six-sigma-yellow-belt-clssyb-training.html")
+    out.append("# 🎯 Certified Lean Six Sigma Yellow Belt (CLSSYB)")
     out.append("")
-    out.append(f"These are the hands-on lab exercises for the WSQ {C.TITLE} course delivered by "
+    out.append(f"**{C.COURSE_CODE} · WSQ · {C.DAYS}-day hands-on Lean Six Sigma certification training**")
+    out.append("")
+    out.append("*Learn the DMAIC roadmap by running one real improvement project end to end.*")
+    out.append("")
+    reg = REGISTER_URL
+    badges = [
+        (f"[![Register](https://img.shields.io/badge/📝_Register_Now-tertiarycourses.com.sg-0A66C2"
+         f"?style=for-the-badge)]({reg})"),
+        "![WSQ Funded](https://img.shields.io/badge/WSQ-SkillsFuture_Funded-00A651?style=for-the-badge)",
+        f"![Duration](https://img.shields.io/badge/Duration-{C.DAYS}_days_·_16_hours-4B5563?style=for-the-badge)",
+        "![Level](https://img.shields.io/badge/Level-Beginner-7C3AED?style=for-the-badge)",
+    ]
+    out.append(" ".join(badges))
+    out.append("")
+    badges2 = [
+        f"![TSC](https://img.shields.io/badge/TSC-{C.TSC_CODE.replace(chr(45), chr(45)*2)}-0F172A?style=flat-square)",
+        f"![Labs](https://img.shields.io/badge/Labs-{n}_({core}_core_+_{n-core}_elective)-2563EB?style=flat-square)",
+        "![Assessment](https://img.shields.io/badge/Assessment-WA_SAQ_+_Case_Study-F59E0B?style=flat-square)",
+        f"![Version](https://img.shields.io/badge/Courseware-{C.VERSION}-64748B?style=flat-square)",
+    ]
+    out.append(" ".join(badges2))
+    out.append("")
+    out.append(f"**[📝 Register for this course →]({reg})**")
+    out.append("")
+    out.append("</div>")
+    out.append("")
+    out.append("---")
+    out.append("")
+    # ---------------- about ----------------
+    out.append("## About This Course")
+    out.append("")
+    out.append(f"This is the official courseware repository for the WSQ **{C.TITLE}** "
+               f"({C.COURSE_CODE}), delivered by "
                "[Tertiary Infotech Academy Pte Ltd](https://www.tertiarycourses.com.sg/).")
     out.append("")
-    out.append(f"This repository contains **{n} guided Lean Six Sigma Yellow Belt labs** "
-               f"({core} core and {n-core} elective), structured around the **DMAIC roadmap** and grounded in the "
-               "Council for Six Sigma Certification (CSSC) Yellow Belt body of knowledge.")
+    out.append(f"The course follows the **DMAIC roadmap** end to end — Define, Measure, Analyze, Improve, "
+               f"Control — across **{n} hands-on labs** ({core} core and {n-core} elective). It is grounded in "
+               "the Council for Six Sigma Certification (CSSC) Yellow Belt body of knowledge, so what you "
+               "learn matches the recognised Yellow Belt standard.")
+    out.append("")
+    out.append("It is written for people who support improvement work rather than lead it — analysts, "
+               "executives, engineers, supervisors and team leads who want to read process data properly, "
+               "find a root cause and make a change that holds.")
+    out.append("")
+    # ---------------- learning outcomes ----------------
+    out.append("## Learning Outcomes")
+    out.append("")
+    out.append("| # | On completion, you will be able to |")
+    out.append("|---|------------------------------------|")
+    for lo in C.LEARNING_OUTCOMES:
+        code, _, text = lo.partition(": ")
+        out.append(f"| **{code}** | {text} |")
+    out.append("")
+    # ---------------- the lab data set ----------------
+    out.append("## The Lab Data Set")
+    out.append("")
+    out.append("Every lab works from one continuous scenario — the **Contoso Service Desk** — and one "
+               "shared set of numbers, so your lab outputs accumulate into a single improvement package.")
+    out.append("")
+    out.append("| Measure | Baseline |")
+    out.append("|---------|----------|")
+    out.append(f"| Tickets analysed | {D.N} over two weeks |")
+    out.append(f"| Defective tickets | {D.DEFECTIVE} ({D.DEFECTIVE/D.N*100:.0f}%) |")
+    out.append(f"| Total defects | {D.TOTAL_DEFECTS} across {D.OPP} opportunities per ticket |")
+    out.append(f"| Yield | {D.YIELD*100:.0f}% |")
+    out.append(f"| DPU · DPMO | {D.DPU:.2f} · {int(D.DPMO):,} |")
+    out.append(f"| Sigma level | ~{D.SIGMA} |")
+    out.append(f"| Mean assignment time | {D.MEAN_MIN} min (median {D.MEDIAN_MIN}) vs a {D.TARGET_MIN}-min goal |")
+    out.append("")
+    out.append("These are the same figures as the Case Study assessment, so lab work doubles as revision. "
+               "Headline values: [labs/scenario-key-figures.csv](labs/scenario-key-figures.csv).")
     out.append("")
     out.append("---")
     out.append("")
@@ -346,7 +539,11 @@ def repo_readme(files):
     out.append("courseware/          slide deck (PPTX + PDF), Learner Guide, Lesson Plan")
     out.append("  archive/           superseded deck versions")
     out.append("  assets/            diagrams and images used by the deck")
-    out.append("labs/                the 14 lab worksheets + index + toolkit")
+    out.append("labs/                one self-contained folder per lab:")
+    out.append("  lab-NN-<name>/     README.md (worksheet) + data/ (mock CSV data)")
+    out.append("                     + templates/ (worksheets to fill in)")
+    out.append("  scenario-key-figures.csv   the headline metrics all labs share")
+    out.append("  tools.md           the interactive toolkit")
     out.append(f"LG-{C.SHORT_TITLE}.md")
     out.append("                     Learner Guide (Markdown mirror of the DOCX)")
     out.append(".claude/skills/courseware-build/build/")
@@ -380,7 +577,57 @@ def repo_readme(files):
     out.append("")
     out.append("---")
     out.append("")
-    out.append(f"*Version {C.VERSION} · {C.VERSION_DATE} · © 2026 {C.ORG}*")
+    # ---------------- course details ----------------
+    out.append("## Course Details")
+    out.append("")
+    out.append("| | |")
+    out.append("|---|---|")
+    out.append(f"| **Course title** | WSQ - {C.TITLE} |")
+    out.append(f"| **Course reference** | {C.COURSE_CODE} |")
+    out.append(f"| **TSC alignment** | {C.TSC_TITLE} ({C.TSC_CODE}) |")
+    out.append(f"| **Duration** | {C.DAYS} days · 8 training hours per day (16 hours) |")
+    out.append("| **Level** | Beginner — no prior Six Sigma knowledge required |")
+    out.append(f"| **Assessment** | {C.ASSESSMENT['written']} {C.ASSESSMENT['practical']} |")
+    out.append("| **Mode** | Instructor-led, hands-on labs |")
+    out.append("| **Certification** | WSQ Statement of Attainment (SOA) on successful assessment |")
+    out.append(f"| **Provider** | {C.ORG} ({C.UEN.replace('UEN: ', 'UEN ')}) |")
+    out.append("")
+    out.append("### Funding")
+    out.append("")
+    out.append("This is a **WSQ / SkillsFuture-funded** course. Singapore Citizens, PRs and eligible "
+               "companies can claim course-fee funding, and SkillsFuture Credit may be used to offset "
+               f"the fee. Current fees, funding tiers and upcoming dates are on the "
+               f"[course registration page]({REGISTER_URL}).")
+    out.append("")
+    out.append(f"{C.ASSESSMENT['note']}")
+    out.append("")
+    out.append("---")
+    out.append("")
+    # ---------------- contact ----------------
+    out.append("## Contact")
+    out.append("")
+    out.append("| | |")
+    out.append("|---|---|")
+    out.append(f"| **Course page** | [{REGISTER_URL.replace('https://', '')}]({REGISTER_URL}) |")
+    out.append("| **Website** | [www.tertiarycourses.com.sg](https://www.tertiarycourses.com.sg/) |")
+    out.append("| **Email** | [enquiry@tertiaryinfotech.com](mailto:enquiry@tertiaryinfotech.com) |")
+    out.append("| **Tel** | +65 6255 5527 |")
+    out.append("| **LMS / TMS** | [lms-tms.tertiaryinfotech.com](https://lms-tms.tertiaryinfotech.com/) |")
+    out.append("")
+    out.append("---")
+    out.append("")
+    # ---------------- closing CTA ----------------
+    out.append('<div align="center">')
+    out.append("")
+    out.append("### Ready to start improving how your work actually runs?")
+    out.append("")
+    out.append(f"**[📝 Register for {C.TITLE} →]({REGISTER_URL})**")
+    out.append("")
+    out.append(f"*Courseware version {C.VERSION} · {C.VERSION_DATE}*")
+    out.append("")
+    out.append(f"© 2026 {C.ORG} · {C.UEN.replace('UEN: ', 'UEN ')}")
+    out.append("")
+    out.append("</div>")
     out.append("")
     return "\n".join(out)
 
