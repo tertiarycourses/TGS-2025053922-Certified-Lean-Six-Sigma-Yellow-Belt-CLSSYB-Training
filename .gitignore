@@ -18,3 +18,8 @@ __pycache__/
 # Stray Playwright captures at repo root (course assets live in courseware/assets/)
 /sipoc-*.png
 /diag.png
+
+# LibreOffice duplicate-render artefacts (never shipped)
+*[0-9].docx.bak
+* 2.docx
+* 2.pdf

@@ -401,6 +401,12 @@ def to_pdf(docx_path):
     """Convert a DOCX to PDF beside it. Returns True on success."""
     if not _SOFFICE: return False
     outdir=os.path.dirname(docx_path)
+    # A stale PDF/DOCX left in place makes LibreOffice emit "<name> 2.pdf" instead of
+    # overwriting, so clear the target first and give every call its own profile.
+    stale=os.path.splitext(docx_path)[0]+".pdf"
+    if os.path.exists(stale):
+        try: os.remove(stale)
+        except OSError: pass
     with tempfile.TemporaryDirectory() as tmp:
         profile=os.path.join(tmp,"lo")
         try:
@@ -837,6 +843,15 @@ if __name__=="__main__":
                         "(special cause) coinciding with the 9 June ITSM migration"]])
             csv_n+=2
         print(f"Wrote {folder_for(a)}/")
+
+    strays=[os.path.join(r,f) for r,_,fs in os.walk(ACTIVITIES) for f in fs
+            if re.search(r" \d+\.(docx|pdf)$", f)]
+    if strays:
+        junk=os.path.join(REPO,"archive","stray-duplicate-renders")
+        for f in strays:
+            d=os.path.join(junk,os.path.relpath(os.path.dirname(f),ACTIVITIES))
+            os.makedirs(d,exist_ok=True); shutil.move(f,os.path.join(d,os.path.basename(f)))
+        print(f"Moved {len(strays)} stray duplicate render(s) to archive/stray-duplicate-renders/")
 
     print(f"\n{len(ACT)} activity folders · {csv_n} CSV files · "
           f"PDFs rendered: {pdf_ok}, failed/skipped: {pdf_skip}")
