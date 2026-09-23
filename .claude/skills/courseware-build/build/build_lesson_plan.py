@@ -27,7 +27,7 @@ def _find_repo(start):
     d=start
     for _ in range(8):
         d=os.path.dirname(d)
-        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"labs")): return d
+        if os.path.isdir(os.path.join(d,"courseware")) and (os.path.isdir(os.path.join(d,"activities")) or os.path.isdir(os.path.join(d,"labs"))): return d
     return os.path.dirname(os.path.dirname(HERE))
 REPO=_find_repo(HERE); ASSETS=os.path.join(os.path.dirname(HERE),"assets")
 
@@ -35,7 +35,7 @@ BRAND=RGBColor(0x1F,0x6F,0xEB); DARK=RGBColor(0x11,0x18,0x27); GREY=RGBColor(0x5
 HEADER_FILL="1F6FEB"; TOPIC_FILL="E8F0FE"; BREAK_FILL="FFF4E5"; LUNCH_FILL="FDE9D9"; ASSESS_FILL="E8F7EE"
 
 def lab_titles(nums):
-    return "; ".join(f"Lab {a['num']}: {a['title']}" for a in ACT if a['num'] in nums)
+    return "; ".join(f"Activity {a['num']}: {a['title']}" for a in ACT if a['num'] in nums)
 
 # ------------------------------------------------ slide ranges (read from the built deck)
 def _scan_deck():
@@ -172,7 +172,8 @@ prodoc.add_version_control(doc,[
  ("5", C.VERSION_DATE, "Integrated the SIPOC & Process Map Builder (alfredang.github.io/sipoc/) into Lab 3 and elective Lab 12, with a tool walkthrough added to the Define phase and the online toolkit slide updated to list all five tools.", C.TRAINER),
  ("6", C.VERSION_DATE, "Fixed clipped headings: slide titles now auto-fit to a single line so long lab titles can no longer overprint the LAB/ELECTIVE chips beneath them.", C.TRAINER),
  ("7", "20 July 2026", "Table of contents restored to a live, updatable Word field (previously flattened to static text), so it refreshes on open or F9 while still rendering correctly in the distributed PDF.", C.TRAINER),
-  ("8", C.VERSION_DATE, "Labs restructured into one self-contained folder per lab, each with its own mock data (data/*.csv) and blank worksheets (templates/*.csv). The Contoso Service Desk data set is now generated from a single verified source and reconciles exactly with the Case Study assessment figures (400 tickets, 96 defective, 120 defects, yield 76%, DPU 0.30, DPMO 50,000). Slides, Lesson Plan and Learner Guide updated to reference the lab data.", C.TRAINER),
+  ("8", "23 September 2026", "Labs restructured into one self-contained folder per lab, each with its own mock data (data/*.csv) and blank worksheets (templates/*.csv). The Contoso Service Desk data set is now generated from a single verified source and reconciles exactly with the Case Study assessment figures (400 tickets, 96 defective, 120 defects, yield 76%, DPU 0.30, DPMO 50,000). Slides, Lesson Plan and Learner Guide updated to reference the lab data.", C.TRAINER),
+  ("9", C.VERSION_DATE, "Labs reissued as ACTIVITY PACKS in the Tertiary Infotech house format: one folder per activity named \"NN - Title\", each holding a Facilitator Guide, a Learner Worksheet and a Checklist (DOCX + PDF) alongside its own mock data (data/*.csv) and blank worksheets (templates/*.csv). The previous labs/ Markdown layout is superseded and archived.", C.TRAINER),
 ])
 prodoc.add_toc(doc)
 
@@ -198,18 +199,19 @@ doc.add_paragraph("On completion of this course, learners will be able to:")
 for lo in C.LEARNING_OUTCOMES:
     p=doc.add_paragraph(style="List Bullet"); p.add_run(lo).font.size=Pt(11)
 
-H("Training Resources and Lab Data",1)
-doc.add_paragraph("Each lab is a self-contained folder under labs/ — labs/lab-NN-<name>/ — holding the "
-                  "worksheet (README.md), the mock data the learners analyse (data/*.csv) and the blank "
-                  "worksheets they complete (templates/*.csv).")
+H("Training Resources and Activity Data",1)
+doc.add_paragraph("Each activity is a self-contained folder under activities/ — activities/NN - <Name>/ — "
+                  "holding the Facilitator Guide, the Learner Worksheet and the Checklist (each as DOCX "
+                  "and PDF), the mock data the learners analyse (data/*.csv) and the blank worksheets "
+                  "they complete (templates/*.csv).")
 for a in [
     f"Shared data set: two weeks of Contoso Service Desk activity — {D.N} tickets, {D.DEFECTIVE} defective, "
     f"{D.TOTAL_DEFECTS} defects, {D.OPP} opportunities per ticket.",
     f"Baseline performance: yield {D.YIELD*100:.0f}%, DPU {D.DPU:.2f}, DPMO {int(D.DPMO):,}, "
     f"sigma level ~{D.SIGMA}; mean assignment time {D.MEAN_MIN} min (median {D.MEDIAN_MIN}) "
     f"against a {D.TARGET_MIN}-minute goal.",
-    "These are the same figures as the Case Study assessment, so lab work is direct revision.",
-    "Trainer note: the Lab 7 worked answers are in labs/lab-07-*/solution/ — do not release before learners attempt it.",
+    "These are the same figures as the Case Study assessment, so activity work is direct revision.",
+    "Trainer note: the Activity 7 worked answers are in activities/07 - Pareto*/solution/ — do not release before learners attempt them.",
     "Learners need a spreadsheet application (Excel, Google Sheets or LibreOffice Calc) and a browser.",
 ]:
     p=doc.add_paragraph(style="List Bullet"); p.add_run(a).font.size=Pt(11)
@@ -250,7 +252,7 @@ for day,(theme,rows) in SCHEDULE.items():
     p=doc.add_paragraph(); r=p.add_run(f"Total training time: {training} minutes ({training//60} hours) — includes tea breaks, excludes the 1-hour lunch."); r.italic=True; r.font.size=Pt(9.5); r.font.color.rgb=GREY
     assert training==480, f"Day {day} training minutes = {training}, expected 480"
 
-H("Lab Reference (aligned to the DMAIC phases)",1)
+H("Activity Reference (aligned to the DMAIC phases)",1)
 tt=doc.add_table(rows=0,cols=3); tt.style="Table Grid"
 hdr=tt.add_row().cells
 for i,htext in enumerate(["DMAIC phase / Topic","Weighting","Labs"]):
@@ -261,7 +263,7 @@ for tp in C.TOPICS:
     set_cell(cells[0],f"{tp['phase']}: {tp['title']}",bold=True,size=9.5,fill=TOPIC_FILL)
     set_cell(cells[1],tp["weighting"],size=9.5,fill=TOPIC_FILL)
     set_cell(cells[2],", ".join(
-        f"Lab {a['num']}" + (" (elective)" if a.get("elective") else "") for a in acts),size=9.5)
+        f"Activity {a['num']}" + (" (elective)" if a.get("elective") else "") for a in acts),size=9.5)
 
 prodoc.add_page_numbers(doc)
 prodoc.enable_update_fields(doc)

@@ -1,7 +1,7 @@
 """
 Domain 2 — Measure and Analyse Process Performance.
 
-Labs 5-8. DMAIC Define/Measure/Analyze depth: data collection, process metrics,
+Activities 5-8. DMAIC Define/Measure/Analyze depth: data collection, process metrics,
 Pareto, run charts and root cause analysis.
 """
 
@@ -20,7 +20,7 @@ DOMAIN2 = [
             ("Refine the problem statement so it is specific, measurable and solution-free.", ""),
             ("Identify stakeholders and classify each by influence and interest.", ""),
             ("Define the project scope and state the expected benefit in business terms.", ""),
-            ("Link the problem back to the CTQ requirements captured in Lab 2.", ""),
+            ("Link the problem back to the CTQ requirements captured in Activity 2.", ""),
             ("Confirm which DMAIC phases a Yellow Belt can support most strongly.", ""),
         ],
         test="Your problem statement passes the 'no solution named' test and every stakeholder has a defined engagement approach.",
@@ -84,7 +84,7 @@ DOMAIN2 = [
              "https://alfredang.github.io/fishbone/"),
             ("Brainstorm candidate causes into each category — no evaluation during generation.", ""),
             ("Use multi-voting to shortlist the most likely causes as a team.", ""),
-            ("Test each shortlisted cause against your Lab 7 data — does the evidence support it?", ""),
+            ("Test each shortlisted cause against your Activity 7 data — does the evidence support it?", ""),
             ("State why the team must not jump straight to solutions.", ""),
         ],
         test="Each shortlisted root cause is supported by named evidence, and your 5 Whys chain ends at something you can act on.",

@@ -239,7 +239,7 @@ LAB_FILES = {
         templates={"five-whys.csv": _fivewhys_template(), "fishbone-causes.csv": _fishbone_template(),
                    "cause-evidence-test.csv": [["candidate_cause", "evidence_that_supports_it", "evidence_that_contradicts_it", "verdict"],
                                                ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]},
-        note="Test every candidate cause against the Lab 7 data before shortlisting it."),
+        note="Test every candidate cause against the Activity 7 data before shortlisting it."),
     9: dict(
         templates={
             "countermeasures.csv": [["root_cause", "countermeasure", "type_5S_pokayoke_standardwork", "impact_H_M_L", "effort_H_M_L", "expected_effect"],

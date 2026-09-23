@@ -78,7 +78,7 @@ WA_MINUTES, PRACTICAL_MINUTES = "60 minutes", "90 minutes"   # taken from the re
 # Pipe-delimited rows always become real Word tables regardless of this setting.
 ANSWER_STYLE = "prose"
 
-Q_VER, A_VER = "v1", "v1"   # single standardised version across all four files
+Q_VER, A_VER = "v2", "v2"   # single standardised version across all four files
 BRAND = RGBColor(0x1F, 0x6F, 0xEB); DARK = RGBColor(0x11, 0x18, 0x27); GREY = RGBColor(0x55, 0x5B, 0x66)
 # Assessments carry the cover page only — no Document Version Control Record.
 
@@ -116,7 +116,7 @@ WRITTEN = [
    "Other acceptable answers: overproduction (reports nobody reads), transportation (passing a case between "
    "departments), motion (staff walking or clicking between screens), inventory (a growing ticket backlog), "
    "non-utilised talent (skilled staff doing clerical work).",
-   "(Slides: Lean, Six Sigma and Value / The Eight Wastes — Lab 2, waste walk.)"]),
+   "(Slides: Lean, Six Sigma and Value / The Eight Wastes — Activity 2, waste walk.)"]),
  ("K1, K2",
   "DMAIC is the improvement roadmap used on larger Six Sigma projects. A Yellow Belt does not usually lead the "
   "project, but is expected to support the early phases with process knowledge and data.",
@@ -140,7 +140,7 @@ WRITTEN = [
    "every recorder counts the same thing the same way. (A data collection plan or run chart is equally acceptable.)",
    "The candidate should show that Define answers “what is the problem?” and Measure answers “how big is it "
    "today?” — neither phase proposes a solution.",
-   "(Slides: DMAIC Overview / Define / Measure — Labs 3, 5 and 6.)"]),
+   "(Slides: DMAIC Overview / Define / Measure — Activities 3, 5 and 6.)"]),
  ("K2",
   "A service desk (or a clinic) is receiving frequent complaints about delays. The team is under pressure and "
   "the first instinct is to add more staff.",
@@ -168,7 +168,7 @@ WRITTEN = [
    "only temporary relief — the problem returns as soon as the workaround stops, and it wastes effort and cost. "
    "Fixing the root cause removes the source of the defect permanently, so the improvement can be standardised "
    "and held with a control plan.",
-   "(Slides: Analyze — Root Cause Analysis / 5 Whys / Fishbone — Lab 8.)"]),
+   "(Slides: Analyze — Root Cause Analysis / 5 Whys / Fishbone — Activity 8.)"]),
 ]
 
 # ---------------------------------------------------------------- PRACTICAL (ACTIVITY-BASED)
@@ -181,8 +181,8 @@ SCENARIO = (
  "Reopened ticket 12, Duplicate ticket 8, Unclear status 4. Each ticket has 6 defect opportunities. "
  "You are the Lean Six Sigma Yellow Belt supporting this team. You are not leading the project: you support the "
  "team by mapping the process, collecting and presenting data, helping to find the root cause, and running a "
- "small PDCA improvement under guidance. Complete the three tasks below — each mirrors a hands-on lab you did "
- "in class. You may use your completed lab worksheets as evidence.")
+ "small PDCA improvement under guidance. Complete the three tasks below — each mirrors a hands-on activity you did "
+ "in class. You may use your completed activity worksheets as evidence.")
 
 # (label, criterion, task prompt, box caption, model-answer build steps citing the activity)
 BOX_CAP = "Write your answer (tables, diagram and calculations) in the box below"
@@ -198,9 +198,9 @@ PRACTICAL = [
   "evidence for each, and classify at least three process activities as value-added, business-value-added or "
   "non-value-added. "
   "Part D — For this process, state what counts as a defect, what is an opportunity for a defect, and what "
-  "variation is visible in the data. (Labs 1 and 2.)",
+  "variation is visible in the data. (Activities 1 and 2.)",
   BOX_CAP,
-  "Part A — Yellow Belt role (Lab 1, Step 1):\n"
+  "Part A — Yellow Belt role (Activity 1, Step 1):\n"
   "  Responsibility            | Yellow Belt contribution\n"
   "  Basic LSS knowledge       | Applies Lean/Six Sigma vocabulary and tools correctly in the team\n"
   "  Process map support       | Builds the SIPOC and the detailed map of ticket assignment\n"
@@ -212,14 +212,14 @@ PRACTICAL = [
   "  full DMAIC project part-time; a Black Belt leads large, cross-functional projects full-time and coaches\n"
   "  others. CSSC sets no prerequisite and no project requirement for Yellow Belt.\n"
   "\n"
-  "Part B — Voice of the Customer (Lab 2, Step 1):\n"
+  "Part B — Voice of the Customer (Activity 2, Step 1):\n"
   "  Customer statement                          | Need                | CTQ requirement\n"
   "  \"I don't know when my ticket will be handled\" | Status visibility  | Status update within 1 h of logging\n"
   "  \"It takes too long before anyone picks it up\"  | Fast assignment    | Ticket assigned within 30 min\n"
   "  \"They closed it but it wasn't fixed\"           | Consistent closure | Single agreed definition of 'resolved'\n"
   "  Accept any reasonable statement/need/CTQ set, provided the CTQ is specific and measurable.\n"
   "\n"
-  "Part C — Waste walk and value analysis (Lab 2, Steps 2–3):\n"
+  "Part C — Waste walk and value analysis (Activity 2, Steps 2–3):\n"
   "  Waiting          | Tickets sit unassigned in the general queue (the largest defect category, 48)\n"
   "  Defects          | Wrong queue (18) and missing information (30) force re-routing and rework\n"
   "  Extra processing | Agents re-key details; employees send repeat status chasers\n"
@@ -228,7 +228,7 @@ PRACTICAL = [
   "  Value analysis: diagnosing/resolving the issue = value-added; logging and audit trail =\n"
   "  business-value-added; re-routing, chasing status and re-keying = non-value-added.\n"
   "\n"
-  "Part D — Defects, opportunities and variation (Lab 2, Step 4):\n"
+  "Part D — Defects, opportunities and variation (Activity 2, Step 4):\n"
   "  Defect: any ticket outcome that fails the CTQ — delayed assignment, missing information, wrong queue,\n"
   "    duplicate, reopened, or unclear status.\n"
   "  Opportunity for a defect: each of the 6 points in handling a ticket where such a defect can occur\n"
@@ -250,9 +250,9 @@ PRACTICAL = [
   "Part D — Using the two weeks of data in the scenario, build the Pareto table (category, count, percent, "
   "cumulative percent) sorted highest to lowest, calculate the defect rate, yield, DPU and DPMO, and state in "
   "two or three sentences which category the team should attack first and what conclusion cannot yet be drawn. "
-  "(Labs 3, 4, 5, 6 and 7.)",
+  "(Activities 3, 4, 5, 6 and 7.)",
   BOX_CAP,
-  "Part A — SIPOC (Lab 3, Steps 1–3):\n"
+  "Part A — SIPOC (Activity 3, Steps 1–3):\n"
   "  Suppliers | Inputs            | Process (5–7 steps)      | Outputs          | Customers\n"
   "  Employee  | Request details   | 1 Log ticket             | Assigned ticket  | Employee\n"
   "  Helpdesk  | Category/priority | 2 Categorise             | Status update    | IT specialist team\n"
@@ -264,7 +264,7 @@ PRACTICAL = [
   "  UNCLEAR OWNERSHIP after handoff (nobody owns triage at peak); DUPLICATE ENTRY (details re-keyed);\n"
   "  MISSING DECISION RULE (no stated time limit for assignment).\n"
   "\n"
-  "Part B — PDCA charter (Labs 4 and 5):\n"
+  "Part B — PDCA charter (Activities 4 and 5):\n"
   "  Problem: Over the last two weeks, the ticket assignment process delayed 48 of 400 tickets beyond the\n"
   "    30-minute target, causing repeat status chasers and missed service levels.\n"
   "  Goal: Reduce average ticket assignment time from 55 minutes (baseline) to under 30 minutes by <date>,\n"
@@ -279,7 +279,7 @@ PRACTICAL = [
   "    ABANDON if there is no improvement.\n"
   "  The problem statement must NOT name a cause or a solution — mark down if it does.\n"
   "\n"
-  "Part C — Data collection plan (Lab 6, Steps 1–4):\n"
+  "Part C — Data collection plan (Activity 6, Steps 1–4):\n"
   "  KPI                 | Operational definition                          | Source        | Frequency\n"
   "  Assignment time     | Minutes from ticket logged to ticket assigned   | Ticket system | Every ticket\n"
   "  First response time | Minutes from logged to first reply to employee  | Ticket system | Every ticket\n"
@@ -289,7 +289,7 @@ PRACTICAL = [
   "  Sampling: all tickets over two weeks; recorded by the triage agent; verified weekly against the\n"
   "  system export; bias risk — agents may under-record their own delays.\n"
   "\n"
-  "Part D — Pareto and metrics (Lab 7, Steps 1–5):\n"
+  "Part D — Pareto and metrics (Activity 7, Steps 1–5):\n"
   "  Defect category | Count | Percent | Cumulative %\n"
   "  Delayed assignment | 48 | 40.0% | 40.0%\n"
   "  Missing information | 30 | 25.0% | 65.0%\n"
@@ -320,9 +320,9 @@ PRACTICAL = [
   "thinking to at least two of the five S's for this information process. "
   "Part D — Build a control plan so the gain is sustained (Process step | Metric | Target | Owner | Check "
   "frequency | Response plan) with at least three rows, name the visual management you would display, and list "
-  "the handover items the process owner must accept. (Labs 8, 9 and 10.)",
+  "the handover items the process owner must accept. (Activities 8, 9 and 10.)",
   BOX_CAP,
-  "Part A — Fishbone for “Ticket assignment is delayed” (Lab 8, Step 3):\n"
+  "Part A — Fishbone for “Ticket assignment is delayed” (Activity 8, Step 3):\n"
   "  People       | No owner for triage at peak; new agents untrained; leave/absence at 9am\n"
   "  Process      | No triage checklist; unclear handoff to specialist queues; no priority rule\n"
   "  Policy       | No stated time limit for assignment; 'resolved' not defined; no escalation trigger\n"
@@ -331,7 +331,7 @@ PRACTICAL = [
   "  Environment  | Tickets arrive in a burst at the start of the day; interruptions at the desk\n"
   "  (The 6M form — Man, Method, Machine, Material, Measurement, Environment — is equally acceptable.)\n"
   "\n"
-  "Part B — 5 Whys on “Tickets sit unassigned in the general queue” (Lab 8, Steps 2 and 5):\n"
+  "Part B — 5 Whys on “Tickets sit unassigned in the general queue” (Activity 8, Steps 2 and 5):\n"
   "  Why 1 | Tickets are assigned late          | Evidence: assignment-time data, 48 delayed tickets\n"
   "  Why 2 | They sit in the general queue      | Evidence: queue-age report / observation at peak\n"
   "  Why 3 | Nobody owns triage during the peak | Evidence: roster, interview with agents\n"
@@ -343,7 +343,7 @@ PRACTICAL = [
   "  queue-age data, observation of the morning peak, and agent interviews. Rate each candidate cause\n"
   "  high/medium/low confidence before acting.\n"
   "\n"
-  "Part C — Countermeasures (Lab 9, Steps 1–5):\n"
+  "Part C — Countermeasures (Activity 9, Steps 1–5):\n"
   "  Root cause | Countermeasure | Expected effect\n"
   "  Free-text categories | POKA-YOKE: mandatory dropdown category and required fields before the ticket can be submitted | Wrong-queue and missing-information defects fall; auto-routing becomes possible\n"
   "  No triage ownership at peak | STANDARD WORK: triage checklist with a named owner per shift, 9:00–11:00 | Tickets assigned within 30 minutes\n"
@@ -354,7 +354,7 @@ PRACTICAL = [
   "  per category with a clear naming rule; SHINE — weekly clean-up of stale tickets; STANDARDIZE — the triage\n"
   "  checklist and the single definition of 'resolved'; SUSTAIN — weekly KPI review with the process owner.\n"
   "\n"
-  "Part D — Control plan (Lab 10, Steps 1–4):\n"
+  "Part D — Control plan (Activity 10, Steps 1–4):\n"
   "  Process step | Metric | Target | Owner | Check frequency | Response if control is lost\n"
   "  Triage | Assignment time | < 30 min | Triage lead | Daily | Escalate to the duty manager; re-staff the peak; find the cause\n"
   "  Categorise | Wrong-queue defects | < 2 / week | Service desk manager | Weekly | Review the dropdown and routing rule; retrain the agent\n"

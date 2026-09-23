@@ -25,7 +25,7 @@ def find_repo(start):
     d = start
     for _ in range(8):
         d = os.path.dirname(d)
-        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"labs")): return d
+        if os.path.isdir(os.path.join(d,"courseware")) and (os.path.isdir(os.path.join(d,"activities")) or os.path.isdir(os.path.join(d,"labs"))): return d
     return os.path.dirname(os.path.dirname(start))
 print(find_repo(here) + "\t" + C.SHORT_TITLE)
 PY
@@ -36,6 +36,7 @@ echo "==> Generate PPT / LP / LG from the single source"
 python3 "$HERE/build_slides.py"
 python3 "$HERE/build_lesson_plan.py"
 python3 "$HERE/build_learner_guide.py"
+python3 "$HERE/build_activities.py"
 
 PPT="$(ls -t "$CW"/*.pptx | head -1)"
 LP="$CW/LP-$SHORT.docx"

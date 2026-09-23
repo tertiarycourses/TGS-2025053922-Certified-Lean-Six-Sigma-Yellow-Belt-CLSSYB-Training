@@ -1,6 +1,6 @@
 # Certified Lean Six Sigma Yellow Belt (CLSSYB) Training — Learner Guide
 
-**WSQ Course Code:** TGS-2025053922  |  **Conducted by:** Tertiary Infotech Academy Pte Ltd (UEN 201200696W)  |  **Version v8 · 23 September 2026**
+**WSQ Course Code:** TGS-2025053922  |  **Conducted by:** Tertiary Infotech Academy Pte Ltd (UEN 201200696W)  |  **Version v9 · 23 September 2026**
 
 ## Contents
 
@@ -9,25 +9,25 @@
 - [Skills Framework Alignment](#skills-framework-alignment)
 - [Before You Start](#before-you-start)
 - [FOUNDATIONS — Six Sigma Foundations  (15%)](#foundations--six-sigma-foundations--15)
-  - [Lab 1 — Yellow Belt Role, Certification Paths, and Improvement Scenario  [Core]](#lab-1--yellow-belt-role-certification-paths-and-improvement-scenario--core)
+  - [Activity 1 — Yellow Belt Role, Certification Paths, and Improvement Scenario  [Core]](#activity-1--yellow-belt-role-certification-paths-and-improvement-scenario--core)
 - [DEFINE — Define — Scope the Problem  (25%)](#define--define--scope-the-problem--25)
-  - [Lab 2 — Lean, Six Sigma, Waste, Voice of Customer, and Value  [Core]](#lab-2--lean-six-sigma-waste-voice-of-customer-and-value--core)
-  - [Lab 3 — SIPOC, Process Mapping, Handoffs, and SME Support  [Core]](#lab-3--sipoc-process-mapping-handoffs-and-sme-support--core)
-  - [Lab 4 — PDCA Small Improvement Project Charter  [Elective]](#lab-4--pdca-small-improvement-project-charter--elective)
-  - [Lab 5 — DMAIC Overview, Problem Statement, Scope, and Stakeholders  [Core]](#lab-5--dmaic-overview-problem-statement-scope-and-stakeholders--core)
-  - [Lab 11 — Affinity Diagram and Kano Analysis  [Elective]](#lab-11--affinity-diagram-and-kano-analysis--elective)
+  - [Activity 2 — Lean, Six Sigma, Waste, Voice of Customer, and Value  [Core]](#activity-2--lean-six-sigma-waste-voice-of-customer-and-value--core)
+  - [Activity 3 — SIPOC, Process Mapping, Handoffs, and SME Support  [Core]](#activity-3--sipoc-process-mapping-handoffs-and-sme-support--core)
+  - [Activity 4 — PDCA Small Improvement Project Charter  [Elective]](#activity-4--pdca-small-improvement-project-charter--elective)
+  - [Activity 5 — DMAIC Overview, Problem Statement, Scope, and Stakeholders  [Core]](#activity-5--dmaic-overview-problem-statement-scope-and-stakeholders--core)
+  - [Activity 11 — Affinity Diagram and Kano Analysis  [Elective]](#activity-11--affinity-diagram-and-kano-analysis--elective)
 - [MEASURE — Measure — Quantify Performance  (25%)](#measure--measure--quantify-performance--25)
-  - [Lab 6 — Data Collection, KPIs, Check Sheets, and Basic Metrics  [Core]](#lab-6--data-collection-kpis-check-sheets-and-basic-metrics--core)
-  - [Lab 12 — Value Stream Map and Takt Time  [Elective]](#lab-12--value-stream-map-and-takt-time--elective)
+  - [Activity 6 — Data Collection, KPIs, Check Sheets, and Basic Metrics  [Core]](#activity-6--data-collection-kpis-check-sheets-and-basic-metrics--core)
+  - [Activity 12 — Value Stream Map and Takt Time  [Elective]](#activity-12--value-stream-map-and-takt-time--elective)
 - [ANALYZE — Analyze — Find the Root Cause  (20%)](#analyze--analyze--find-the-root-cause--20)
-  - [Lab 7 — Pareto, Run Charts, Variation, Yield, DPU, and DPMO  [Core]](#lab-7--pareto-run-charts-variation-yield-dpu-and-dpmo--core)
-  - [Lab 8 — Root Cause Analysis with 5 Whys, Fishbone, and Evidence  [Core]](#lab-8--root-cause-analysis-with-5-whys-fishbone-and-evidence--core)
+  - [Activity 7 — Pareto, Run Charts, Variation, Yield, DPU, and DPMO  [Core]](#activity-7--pareto-run-charts-variation-yield-dpu-and-dpmo--core)
+  - [Activity 8 — Root Cause Analysis with 5 Whys, Fishbone, and Evidence  [Core]](#activity-8--root-cause-analysis-with-5-whys-fishbone-and-evidence--core)
 - [IMPROVE — Improve — Fix the Cause  (10%)](#improve--improve--fix-the-cause--10)
-  - [Lab 9 — Countermeasures, 5S, Mistake Proofing, Standard Work, and Kaizen  [Core]](#lab-9--countermeasures-5s-mistake-proofing-standard-work-and-kaizen--core)
-  - [Lab 13 — Solution Selection Matrix, Benchmarking, and FMEA  [Elective]](#lab-13--solution-selection-matrix-benchmarking-and-fmea--elective)
+  - [Activity 9 — Countermeasures, 5S, Mistake Proofing, Standard Work, and Kaizen  [Core]](#activity-9--countermeasures-5s-mistake-proofing-standard-work-and-kaizen--core)
+  - [Activity 13 — Solution Selection Matrix, Benchmarking, and FMEA  [Elective]](#activity-13--solution-selection-matrix-benchmarking-and-fmea--elective)
 - [CONTROL — Control — Hold the Gain  (5%)](#control--control--hold-the-gain--5)
-  - [Lab 10 — Control Plan, A3 Summary, Handover, and Certification Readiness  [Core]](#lab-10--control-plan-a3-summary-handover-and-certification-readiness--core)
-  - [Lab 14 — Descriptive Statistics and Implementation Planning  [Elective]](#lab-14--descriptive-statistics-and-implementation-planning--elective)
+  - [Activity 10 — Control Plan, A3 Summary, Handover, and Certification Readiness  [Core]](#activity-10--control-plan-a3-summary-handover-and-certification-readiness--core)
+  - [Activity 14 — Descriptive Statistics and Implementation Planning  [Elective]](#activity-14--descriptive-statistics-and-implementation-planning--elective)
 - [Quick Reference — Formulas You Should Know](#quick-reference--formulas-you-should-know)
 - [Quick Reference — The Eight Wastes (DOWNTIME)](#quick-reference--the-eight-wastes-downtime)
 - [Preparing for the Assessment](#preparing-for-the-assessment)
@@ -36,11 +36,11 @@
 
 ## Introduction
 
-This Learner Guide accompanies the WSQ course Certified Lean Six Sigma Yellow Belt (CLSSYB) Training (TGS-2025053922), conducted by Tertiary Infotech Academy Pte Ltd. It follows the DMAIC roadmap end to end — Define, Measure, Analyze, Improve, Control — and provides step-by-step instructions for every hands-on lab. Core labs are assessed; elective labs are provided as additional practice and are run when time allows.
+This Learner Guide accompanies the WSQ course Certified Lean Six Sigma Yellow Belt (CLSSYB) Training (TGS-2025053922), conducted by Tertiary Infotech Academy Pte Ltd. It follows the DMAIC roadmap end to end — Define, Measure, Analyze, Improve, Control — and provides step-by-step instructions for every hands-on activity. Core activities are assessed; elective activities are provided as additional practice and are run when time allows.
 
 The course content is grounded in the body of knowledge published by The Council for Six Sigma Certification (CSSC) in 'Six Sigma: A Complete Step-by-Step Guide', so what you learn here matches the recognised Yellow Belt standard.
 
-Every lab uses one continuous scenario — the Contoso Service Desk, where IT tickets take too long to be assigned and employees must chase for status. By the end of the course your lab outputs form a complete improvement package: role definition, VOC/CTQ, process maps, data collection plan, analysis, root cause, countermeasures and a control plan.
+Every activity uses one continuous scenario — the Contoso Service Desk, where IT tickets take too long to be assigned and employees must chase for status. By the end of the course your lab outputs form a complete improvement package: role definition, VOC/CTQ, process maps, data collection plan, analysis, root cause, countermeasures and a control plan.
 
 
 ## Course Learning Outcomes
@@ -90,7 +90,7 @@ Five browser-based tools are used during the labs. No installation, licence or s
 - Pareto Chart (collaborative) — your team brainstorms and votes in one live session and the Pareto chart builds itself: https://alfredang.github.io/paretochart/
 - NovaSPC — run charts, SPC charts and process capability from your own CSV: https://alfredang.github.io/novaspc/
 
-**Core and elective labs**
+**Core and elective activities**
 
 - Core labs are completed by everyone and map directly to the assessment.
 - Elective labs extend the same scenario with additional Lean Six Sigma tools; complete them if time allows or as post-course practice.
@@ -98,7 +98,7 @@ Five browser-based tools are used during the labs. No installation, licence or s
 
 **The Contoso Service Desk data set**
 
-Every lab works from one real-shaped data set: two weeks of service desk activity — 400 tickets, of which 96 contained at least one defect, with 120 defects recorded across 6 defect opportunities per ticket. Mean assignment time is 55 minutes (median 46) against a 30-minute improvement goal.
+Every activity works from one real-shaped data set: two weeks of service desk activity — 400 tickets, of which 96 contained at least one defect, with 120 defects recorded across 6 defect opportunities per ticket. Mean assignment time is 55 minutes (median 46) against a 30-minute improvement goal.
 
 These are the same figures the Case Study assessment uses, so the numbers you calculate in the labs are the numbers you will be assessed on.
 
@@ -107,11 +107,11 @@ These are the same figures the Case Study assessment uses, so the numbers you ca
 - The run chart hides a genuine special cause: performance shifts from day 7, when the ITSM platform was migrated.
 - Each lab folder carries its own data/ (mock data to analyse) and templates/ (worksheets to complete).
 
-**Where to find each lab's files**
+**Where to find each activity's files**
 
-Each lab is a self-contained folder under labs/ — labs/lab-NN-<name>/ — containing README.md (the worksheet), data/ (the CSV mock data) and templates/ (the blank CSV worksheets you fill in). Open the CSV files in Excel, Google Sheets or LibreOffice Calc, and always work on a copy.
+Each activity is a self-contained folder under activities/ — activities/NN - <Name>/ — holding a Facilitator Guide, a Learner Worksheet and a Checklist (each as DOCX and PDF), plus data/ (the CSV mock data) and templates/ (the blank CSV worksheets you fill in). Open the CSV files in Excel, Google Sheets or LibreOffice Calc, and always work on a copy.
 
-**Conventions used in every lab**
+**Conventions used in every activity**
 
 - Each lab states its objective, the deliverable you produce, the steps, and a check to confirm you are done.
 - Tables shown in the steps can be built in a spreadsheet or on the worksheet provided.
@@ -133,7 +133,7 @@ Quality · Lean · Six Sigma · Lean Six Sigma · Belt roles · The DMAIC roadma
 - The DMAIC roadmap — Define, Measure, Analyze, Improve, Control — the disciplined improvement path.
 
 
-### Lab 1 — Yellow Belt Role, Certification Paths, and Improvement Scenario  [Core]
+### Activity 1 — Yellow Belt Role, Certification Paths, and Improvement Scenario  [Core]
 
 Objective: Explain the Yellow Belt role and select a suitable improvement scenario (A1).
 
@@ -151,7 +151,7 @@ A Yellow Belt responsibility table and a selected improvement scenario.   (Tools
 4. Test your scenario against the 'good project' criteria — day-to-day work, manageable, aligned to business goals, data available.
 5. Record why a Yellow Belt supports rather than leads this improvement.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/service-desk-tickets.csv — 400 rows of mock data (ticket_id, date, ticket_type, channel, assigned_queue, agent, assignment_time_min, met_30min_goal, defect_count, defect_categories, reopened)
 - templates/belt-pathway-comparison.csv — worksheet to complete (belt, typical_role, training_days, leads_or_supports, typical_project_scope)
@@ -164,7 +164,7 @@ The scenario brief and the two weeks of ticket data are in data/.
 
 You can state the Yellow Belt role in one sentence and justify your scenario against all four selection criteria.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-01-yellow-belt-role-certification-paths-and-improvement-scenari/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/01 - Yellow Belt Role, Certification Paths, and Improvement Scenario/.
 
 ---
 
@@ -183,7 +183,7 @@ VOC · CTQ · Project charter · Problem statement · Scope · SIPOC · Process 
 - Process mapping — Flowcharts and swimlanes expose the handoffs where delay and defects are born.
 
 
-### Lab 2 — Lean, Six Sigma, Waste, Voice of Customer, and Value  [Core]
+### Activity 2 — Lean, Six Sigma, Waste, Voice of Customer, and Value  [Core]
 
 Objective: Apply Lean and Six Sigma concepts — value, waste, defects, variation (K1, A2).
 
@@ -202,7 +202,7 @@ A VOC-to-CTQ translation table, a value-added analysis, and a waste walk log.   
 5. Distinguish a defect (output fails CTQ) from waste (effort the customer will not pay for).
 6. Identify which single waste type appears most often in your scenario.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/voice-of-customer.csv — 10 rows of mock data (id, customer_statement, source, date)
 - data/waste-walk-observations.csv — 10 rows of mock data (obs_id, observation, process_step, time_lost_min, waste_type)
@@ -215,12 +215,12 @@ Tag every waste-walk observation with one of the eight DOWNTIME waste types.
 
 Every CTQ is measurable with a target, and each waste observation is tagged to one of the eight waste types.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-02-lean-six-sigma-waste-voice-of-customer-and-value/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/02 - Lean, Six Sigma, Waste, Voice of Customer, and Value/.
 
 ---
 
 
-### Lab 3 — SIPOC, Process Mapping, Handoffs, and SME Support  [Core]
+### Activity 3 — SIPOC, Process Mapping, Handoffs, and SME Support  [Core]
 
 Objective: Map a process with SIPOC and a detailed process map to expose handoffs (A2, A3).
 
@@ -244,7 +244,7 @@ A completed SIPOC and a detailed process map with pain points marked.   (Tools a
 5. Tag pain points on the steps — waiting, rework loop, unclear ownership, duplicate entry or missing decision rule (at least three).
 6. Prepare SME notes for the Green Belt: what you observed and what needs validation.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/process-steps.csv — 7 rows of mock data (step_no, activity, actor, system, process_time_min, wait_time_min, handoff_to)
 - templates/handoff-register.csv — worksheet to complete (handoff_no, from_actor, to_actor, trigger, owner_both_sides, pain_point)
@@ -256,12 +256,12 @@ data/process-steps.csv holds the as-is step, actor, system and timing data.
 
 Run 'Check my SIPOC' in the tool — all five columns populated, 5-7 steps, at least three pain points, and every handoff owned on both sides.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-03-sipoc-process-mapping-handoffs-and-sme-support/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/03 - SIPOC, Process Mapping, Handoffs, and SME Support/.
 
 ---
 
 
-### Lab 4 — PDCA Small Improvement Project Charter  [Elective]
+### Activity 4 — PDCA Small Improvement Project Charter  [Elective]
 
 Objective: Charter a small improvement using PDCA with a measurable goal (A1, A2).
 
@@ -280,7 +280,7 @@ A one-page PDCA charter with problem statement, goal, scope and success measure.
 5. Identify stakeholders and the decision you will make after the Check phase.
 6. Confirm the improvement is small enough to test within two weeks.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - templates/pdca-charter.csv — worksheet to complete (section, content)
 
@@ -290,12 +290,12 @@ Baseline figures for the goal statement come from data/daily-summary.csv.
 
 Your goal statement contains a metric, a baseline, a target and a date, and your problem statement names no solution.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-04-pdca-small-improvement-project-charter/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/04 - PDCA Small Improvement Project Charter/.
 
 ---
 
 
-### Lab 5 — DMAIC Overview, Problem Statement, Scope, and Stakeholders  [Core]
+### Activity 5 — DMAIC Overview, Problem Statement, Scope, and Stakeholders  [Core]
 
 Objective: Support the Define phase of a DMAIC project (A1, A2).
 
@@ -311,10 +311,10 @@ A DMAIC phase table, refined problem statement, stakeholder map and benefit esti
 2. Refine the problem statement so it is specific, measurable and solution-free.
 3. Identify stakeholders and classify each by influence and interest.
 4. Define the project scope and state the expected benefit in business terms.
-5. Link the problem back to the CTQ requirements captured in Lab 2.
+5. Link the problem back to the CTQ requirements captured in Activity 2.
 6. Confirm which DMAIC phases a Yellow Belt can support most strongly.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - templates/dmaic-phase-table.csv — worksheet to complete (phase, purpose, key_deliverable, yellow_belt_support_role)
 - templates/stakeholder-map.csv — worksheet to complete (stakeholder, interest, influence_H_M_L, interest_H_M_L, engagement_approach)
@@ -323,12 +323,12 @@ A DMAIC phase table, refined problem statement, stakeholder map and benefit esti
 
 Your problem statement passes the 'no solution named' test and every stakeholder has a defined engagement approach.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-05-dmaic-overview-problem-statement-scope-and-stakeholders/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/05 - DMAIC Overview, Problem Statement, Scope, and Stakeholders/.
 
 ---
 
 
-### Lab 11 — Affinity Diagram and Kano Analysis  [Elective]
+### Activity 11 — Affinity Diagram and Kano Analysis  [Elective]
 
 Objective: Organise customer requirements and classify them by satisfaction impact (K2).
 
@@ -345,7 +345,7 @@ An Affinity Diagram of clustered VOC themes and a Kano classification table.   (
 3. Classify each requirement as Must-Be, One-Dimensional or Delighter.
 4. Plot the requirements on the Kano diagram and identify where to invest first.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/voice-of-customer.csv — 10 rows of mock data (id, customer_statement, source, date)
 - templates/affinity-groups.csv — worksheet to complete (voc_id, statement, affinity_group)
@@ -355,7 +355,7 @@ An Affinity Diagram of clustered VOC themes and a Kano classification table.   (
 
 Every VOC note sits in exactly one named affinity group and carries a Kano classification.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-11-affinity-diagram-and-kano-analysis/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/11 - Affinity Diagram and Kano Analysis/.
 
 ---
 
@@ -374,7 +374,7 @@ The 8 wastes · Data types · Data collection plan · Check sheets · Yield · D
 - Sigma level — Convert DPMO into a sigma level to benchmark the process against Six Sigma.
 
 
-### Lab 6 — Data Collection, KPIs, Check Sheets, and Basic Metrics  [Core]
+### Activity 6 — Data Collection, KPIs, Check Sheets, and Basic Metrics  [Core]
 
 Objective: Plan and execute data collection against defined quality standards (A4).
 
@@ -393,7 +393,7 @@ A data collection plan, an operational definition set and a working check sheet.
 5. Plan sampling: how many, how often, by whom — and identify possible bias.
 6. State which KPI best reflects the customer pain point from your VOC work.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/daily-summary.csv — 10 rows of mock data (date, tickets, mean_assignment_min, median_assignment_min, defects, missed_30min_goal)
 - data/service-desk-tickets.csv — 400 rows of mock data (ticket_id, date, ticket_type, channel, assigned_queue, agent, assignment_time_min, met_30min_goal, defect_count, defect_categories, reopened)
@@ -406,12 +406,12 @@ data/service-desk-tickets.csv is the full two-week extract (400 tickets).
 
 Two different people reading your operational definition would record the same value for the same event.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-06-data-collection-kpis-check-sheets-and-basic-metrics/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/06 - Data Collection, KPIs, Check Sheets, and Basic Metrics/.
 
 ---
 
 
-### Lab 12 — Value Stream Map and Takt Time  [Elective]
+### Activity 12 — Value Stream Map and Takt Time  [Elective]
 
 Objective: Quantify flow, lead time and takt time across the value stream (A3, A4).
 
@@ -423,7 +423,7 @@ A value stream map with lead time, process time and a calculated takt time.   (T
 
 **Step-by-step**
 
-1. Map the value stream: each step with its process time and the wait time between steps. Start from your Lab 3 process map.
+1. Map the value stream: each step with its process time and the wait time between steps. Start from your Activity 3 process map.
 
    ```bash
    https://alfredang.github.io/sipoc/
@@ -433,7 +433,7 @@ A value stream map with lead time, process time and a calculated takt time.   (T
 3. Calculate takt time = available working time / customer demand.
 4. Compare cycle time against takt time to identify the bottleneck step.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/process-steps.csv — 7 rows of mock data (step_no, activity, actor, system, process_time_min, wait_time_min, handoff_to)
 - templates/takt-time.csv — worksheet to complete (input, value)
@@ -443,7 +443,7 @@ A value stream map with lead time, process time and a calculated takt time.   (T
 
 Your lead time equals the sum of all process and wait times, and takt time is expressed per unit.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-12-value-stream-map-and-takt-time/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/12 - Value Stream Map and Takt Time/.
 
 ---
 
@@ -462,7 +462,7 @@ Variation · Pareto · Run charts · 5 Whys · Fishbone · Multi-voting · Evide
 - Evidence testing — A cause is only a root cause when the data you collected supports it.
 
 
-### Lab 7 — Pareto, Run Charts, Variation, Yield, DPU, and DPMO  [Core]
+### Activity 7 — Pareto, Run Charts, Variation, Yield, DPU, and DPMO  [Core]
 
 Objective: Analyse process performance data to quantify and prioritise (A3, A4).
 
@@ -493,7 +493,7 @@ A Pareto chart, a run chart and calculated yield, DPU, DPO, DPMO and sigma level
 7. Convert DPMO to a sigma level and interpret what it says about the process.
 8. Distinguish common-cause from special-cause variation and why the response differs.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/assignment-times.csv — 400 rows of mock data (date, ticket_id, assignment_time_min)
 - data/daily-summary.csv — 10 rows of mock data (date, tickets, mean_assignment_min, median_assignment_min, defects, missed_30min_goal)
@@ -508,12 +508,12 @@ Upload data/assignment-times.csv to NovaSPC for the run chart. Worked answers ar
 
 Your cumulative percentage column reaches 100%, and you can state the sigma level with the DPMO it came from.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-07-pareto-run-charts-variation-yield-dpu-and-dpmo/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/07 - Pareto, Run Charts, Variation, Yield, DPU, and DPMO/.
 
 ---
 
 
-### Lab 8 — Root Cause Analysis with 5 Whys, Fishbone, and Evidence  [Core]
+### Activity 8 — Root Cause Analysis with 5 Whys, Fishbone, and Evidence  [Core]
 
 Objective: Identify root causes of variation using structured analysis (A3).
 
@@ -540,10 +540,10 @@ A completed 5 Whys chain, a Fishbone diagram and an evidence-tested cause shortl
 
 4. Brainstorm candidate causes into each category — no evaluation during generation.
 5. Use multi-voting to shortlist the most likely causes as a team.
-6. Test each shortlisted cause against your Lab 7 data — does the evidence support it?
+6. Test each shortlisted cause against your Activity 7 data — does the evidence support it?
 7. State why the team must not jump straight to solutions.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/daily-summary.csv — 10 rows of mock data (date, tickets, mean_assignment_min, median_assignment_min, defects, missed_30min_goal)
 - data/defect-counts.csv — 6 rows of mock data (defect_category, count)
@@ -552,13 +552,13 @@ A completed 5 Whys chain, a Fishbone diagram and an evidence-tested cause shortl
 - templates/fishbone-causes.csv — worksheet to complete (category, possible_cause, supported_by_evidence)
 - templates/five-whys.csv — worksheet to complete (why_level, question, answer, evidence_needed, evidence_found)
 
-Test every candidate cause against the Lab 7 data before shortlisting it.
+Test every candidate cause against the Activity 7 data before shortlisting it.
 
 **Check your work**
 
 Each shortlisted root cause is supported by named evidence, and your 5 Whys chain ends at something you can act on.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-08-root-cause-analysis-with-5-whys-fishbone-and-evidence/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/08 - Root Cause Analysis with 5 Whys, Fishbone, and Evidence/.
 
 ---
 
@@ -577,7 +577,7 @@ Countermeasures · 5S · Poka-Yoke · Standard work · Kaizen · Solution select
 - Piloting — Test the change at small scale to expose issues before full rollout.
 
 
-### Lab 9 — Countermeasures, 5S, Mistake Proofing, Standard Work, and Kaizen  [Core]
+### Activity 9 — Countermeasures, 5S, Mistake Proofing, Standard Work, and Kaizen  [Core]
 
 Objective: Recommend improvement actions that address the proven root cause (A5).
 
@@ -597,7 +597,7 @@ A prioritised countermeasure set with a 5S plan, a poka-yoke design and standard
 6. Plan a Kaizen event or pilot to test the countermeasure at small scale first.
 7. Distinguish a containment countermeasure from a permanent solution.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - templates/5s-plan.csv — worksheet to complete (S, what_it_means_here, action, owner)
 - templates/countermeasures.csv — worksheet to complete (root_cause, countermeasure, type_5S_pokayoke_standardwork, impact_H_M_L, effort_H_M_L, expected_effect)
@@ -606,12 +606,12 @@ A prioritised countermeasure set with a 5S plan, a poka-yoke design and standard
 
 Every countermeasure traces back to a proven root cause, and your poka-yoke prevents rather than detects the error.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-09-countermeasures-5s-mistake-proofing-standard-work-and-kaizen/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/09 - Countermeasures, 5S, Mistake Proofing, Standard Work, and Kaizen/.
 
 ---
 
 
-### Lab 13 — Solution Selection Matrix, Benchmarking, and FMEA  [Elective]
+### Activity 13 — Solution Selection Matrix, Benchmarking, and FMEA  [Elective]
 
 Objective: Evaluate and de-risk candidate solutions before implementation (A5, K2).
 
@@ -629,7 +629,7 @@ A scored solution selection matrix, a benchmarking summary and an FMEA with RPN.
 4. Build an FMEA: failure mode, effect, cause, then score Severity, Occurrence and Detection.
 5. Calculate RPN = S x O x D and address the highest-RPN failure modes first.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/candidate-solutions.csv — 5 rows of mock data (solution_id, candidate_solution, est_cost, est_effort_days)
 - templates/fmea.csv — worksheet to complete (process_step, failure_mode, effect, cause, severity_1_10, occurrence_1_10, detection_1_10, RPN, action)
@@ -639,7 +639,7 @@ A scored solution selection matrix, a benchmarking summary and an FMEA with RPN.
 
 Your matrix ranks solutions by weighted score, and every FMEA row has an RPN and an action for the highest scores.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-13-solution-selection-matrix-benchmarking-and-fmea/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/13 - Solution Selection Matrix, Benchmarking, and FMEA/.
 
 ---
 
@@ -658,7 +658,7 @@ Control plan · Visual management · SOPs · Huddles · A3 · Handover · Certif
 - A3 and handover — One-page storytelling to summarise, hand over and sustain the improvement.
 
 
-### Lab 10 — Control Plan, A3 Summary, Handover, and Certification Readiness  [Core]
+### Activity 10 — Control Plan, A3 Summary, Handover, and Certification Readiness  [Core]
 
 Objective: Recommend control actions to sustain process performance (A5).
 
@@ -677,7 +677,7 @@ A control plan, an A3 one-page summary, a handover checklist and a readiness pla
 5. Prepare the handover checklist so the process owner can sustain it without you.
 6. Complete your personal certification readiness plan — which topics need most review.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/assignment-times.csv — 400 rows of mock data (date, ticket_id, assignment_time_min)
 - templates/a3-summary.csv — worksheet to complete (a3_section, content)
@@ -690,12 +690,12 @@ Re-plot data/assignment-times.csv in NovaSPC to show the post-improvement positi
 
 Every control plan row has a named owner and a reaction plan, and your A3 fits on one page.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-10-control-plan-a3-summary-handover-and-certification-readiness/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/10 - Control Plan, A3 Summary, Handover, and Certification Readiness/.
 
 ---
 
 
-### Lab 14 — Descriptive Statistics and Implementation Planning  [Elective]
+### Activity 14 — Descriptive Statistics and Implementation Planning  [Elective]
 
 Objective: Summarise data numerically and plan the rollout (A4, A5).
 
@@ -712,7 +712,7 @@ A descriptive statistics summary and a dated implementation plan.   (Tools and t
 3. Explain what the mean-versus-median difference reveals about outliers and skew.
 4. Write the implementation plan: action, owner, date, barriers and mitigation.
 
-**Data and worksheets for this lab**
+**Data and worksheets for this activity**
 
 - data/assignment-times.csv — 400 rows of mock data (date, ticket_id, assignment_time_min)
 - data/daily-summary.csv — 10 rows of mock data (date, tickets, mean_assignment_min, median_assignment_min, defects, missed_30min_goal)
@@ -726,7 +726,7 @@ data/assignment-times.csv is the raw column for the statistics.
 
 You can explain why the mean and median differ in your data, and every implementation action has an owner and a date.
 
-> **Note:** The full worksheet, the mock data and the blank templates for this lab are in labs/lab-14-descriptive-statistics-and-implementation-planning/ — open README.md in that folder.
+> **Note:** The Learner Worksheet, Checklist, mock data and blank templates for this activity are in activities/14 - Descriptive Statistics and Implementation Planning/.
 
 ---
 

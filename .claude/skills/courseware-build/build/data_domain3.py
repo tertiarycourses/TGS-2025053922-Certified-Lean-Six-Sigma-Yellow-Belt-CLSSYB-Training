@@ -1,7 +1,7 @@
 """
 Domain 3 — Improve and Control the Process.
 
-Labs 9-10 (assessed core) plus optional stretch activities imported from the
+Activities 9-10 (assessed core) plus optional stretch activities imported from the
 original v20 trainer deck so no activity from the original course is lost:
 Affinity Diagram, Kano Analysis, Project Charter, VSM, Takt Time, Descriptive
 Statistics, Benchmarking, Solution Selection Matrix, FMEA and Implementation Plan.
@@ -75,7 +75,7 @@ DOMAIN3 = [
         build="A value stream map with lead time, process time and a calculated takt time.",
         services="SIPOC & Process Map Builder, value stream mapping, lead time, WIP, takt time",
         steps=[
-            ("Map the value stream: each step with its process time and the wait time between steps. Start from your Lab 3 process map.",
+            ("Map the value stream: each step with its process time and the wait time between steps. Start from your Activity 3 process map.",
              "https://alfredang.github.io/sipoc/"),
             ("Total the value-added time and the lead time, then compute process cycle efficiency.", ""),
             ("Calculate takt time = available working time / customer demand.", ""),

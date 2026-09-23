@@ -16,7 +16,7 @@ data_domainN.py so they stay 100% aligned.
 TITLE        = "Certified Lean Six Sigma Yellow Belt (CLSSYB) Training"
 SHORT_TITLE  = "Certified Lean Six Sigma Yellow Belt (CLSSYB) Training"
 COURSE_CODE  = "TGS-2025053922"
-VERSION      = "v8"
+VERSION      = "v9"
 VERSION_DATE = "23 September 2026"
 ORG          = "Tertiary Infotech Academy Pte Ltd"
 UEN          = "UEN: 201200696W"
@@ -50,7 +50,7 @@ LEARNING_OUTCOMES = [
 
 # ------------------------------------------------------------------ topics
 # The course follows the DMAIC roadmap end to end: Foundations establish the
-# language, then one topic per DMAIC phase. Every lab lands inside the phase it
+# language, then one topic per DMAIC phase. Every activity lands inside the phase it
 # belongs to, so the slides, LG, LP and labs all tell one coherent story.
 TOPICS = [
     dict(num=0, code="00", phase="FOUNDATIONS",

@@ -159,13 +159,13 @@ def foundations(d):
                ("Days to a few weeks", 1),
                ("A Yellow Belt can run this", 1),
                ("Lower data requirement", 1),
-               ("Used in Lab 4", 1)],
+               ("Used in Activity 4", 1)],
               [("DMAIC — the full roadmap", 0),
                ("For larger, cross-functional problems", 1),
                ("Weeks to months", 1),
                ("Led by a Green or Black Belt", 1),
                ("Data and statistics required", 1),
-               ("Supported by you from Lab 5 onward", 1)],
+               ("Supported by you from Activity 5 onward", 1)],
               kicker="CHOOSING YOUR APPROACH", lhead="Small improvement", rhead="Full project",
               lcolor=TEAL, rcolor=BLUE)
     d.flow_h("PDCA — The Small Improvement Cycle", [
@@ -304,7 +304,7 @@ def define_phase(d):
         ("Swimlane for free", "Assign an actor to each step and the swimlane and handoff table build themselves."),
         ("Check my SIPOC", "Validates the same rules your lab and assessment are marked against."),
     ], kicker="DEFINE · YOUR ONLINE TOOL", cols=2, size=13, accent=TEAL)
-    d.flow_h("Using the SIPOC Builder in Lab 3", [
+    d.flow_h("Using the SIPOC Builder in Activity 3", [
         "Set the process name, start point and stop point",
         "List the 5–7 process steps, then work outward to O, C, I, S",
         "Tag at least three pain points on the steps",

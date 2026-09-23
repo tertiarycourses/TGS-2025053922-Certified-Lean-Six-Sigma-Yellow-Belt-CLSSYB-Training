@@ -36,7 +36,7 @@ def _find_repo(start):
     d = start
     for _ in range(8):
         d = os.path.dirname(d)
-        if os.path.isdir(os.path.join(d, "courseware")) and os.path.isdir(os.path.join(d, "labs")):
+        if os.path.isdir(os.path.join(d, "courseware")) and (os.path.isdir(os.path.join(d, "activities")) or os.path.isdir(os.path.join(d, "labs"))):
             return d
     return os.path.dirname(os.path.dirname(HERE))
 
@@ -101,13 +101,13 @@ lms = asset("lms_download.png")
 if lms:
     d.image_slide("Download Your Course Material", lms,
                   kicker="COURSE PORTAL · lms-tms.tertiaryinfotech.com",
-                  caption="Log in to lms-tms.tertiaryinfotech.com to download the slides, Learner Guide and lab files.")
+                  caption="Log in to lms-tms.tertiaryinfotech.com to download the slides, Learner Guide and activity files.")
 else:
     d.flow_h("Download Your Course Material", [
         "Go to lms-tms.tertiaryinfotech.com",
         "Sign in with the account details given in class",
         "Open this course from your dashboard",
-        "Download the slides, Learner Guide and lab files",
+        "Download the slides, Learner Guide and activity files",
         "Keep them open — the assessment is open book",
     ], kicker="COURSE PORTAL · lms-tms.tertiaryinfotech.com", color=TEAL)
 
@@ -116,17 +116,17 @@ d.two_col("Lesson Plan — 2 Days, 8 Hours per Day",
           [("Day 1 — " + C.DAY_THEMES[1], 0),
            ("Digital attendance (AM) · Introductions", 1),
            ("Foundations: Quality, Lean, Six Sigma, belts, DMAIC", 1),
-           ("Lab 1 — Yellow Belt role and scenario", 1),
+           ("Activity 1 — Yellow Belt role and scenario", 1),
            ("DEFINE: VOC, CTQ, charter, SIPOC, process mapping", 1),
-           ("Labs 2-5 — VOC/waste, SIPOC, PDCA charter, DMAIC Define", 1)],
+           ("Activities 2-5 — VOC/waste, SIPOC, PDCA charter, DMAIC Define", 1)],
           [("Day 2 — " + C.DAY_THEMES[2], 0),
            ("Digital attendance (AM)", 1),
            ("MEASURE: wastes, data types, check sheets, DPMO", 1),
-           ("Lab 6 — Data collection and KPIs", 1),
+           ("Activity 6 — Data collection and KPIs", 1),
            ("ANALYZE: Pareto, run charts, 5 Whys, Fishbone", 1),
-           ("Labs 7-8 — Data analysis and root cause", 1),
+           ("Activities 7-8 — Data analysis and root cause", 1),
            ("IMPROVE & CONTROL: 5S, poka-yoke, control plan, A3", 1),
-           ("Labs 9-10 · Revision · Final Assessment", 1)],
+           ("Activities 9-10 · Revision · Final Assessment", 1)],
           kicker="SCHEDULE · 9:30am-6:30pm with a 1-hour lunch",
           lhead="Day 1", rhead="Day 2")
 
@@ -145,11 +145,11 @@ d.tile_grid("Learning Outcomes", [
 ], kicker="WHAT YOU'LL ACHIEVE", cols=2, size=14)
 
 d.dmaic_wheel("Course Outline — We Follow DMAIC End to End", [
-    ("D", "Define", ["Foundations + Define", "VOC, CTQ, charter", "SIPOC, process maps", "Labs 1-5"]),
-    ("M", "Measure", ["8 wastes, data types", "Collection plan", "Yield, DPMO, sigma", "Lab 6"]),
-    ("A", "Analyze", ["Variation", "Pareto, run charts", "5 Whys, Fishbone", "Labs 7-8"]),
-    ("I", "Improve", ["Solution selection", "5S, poka-yoke", "Standard work", "Lab 9"]),
-    ("C", "Control", ["Control plan", "Visual management", "A3 and handover", "Lab 10"]),
+    ("D", "Define", ["Foundations + Define", "VOC, CTQ, charter", "SIPOC, process maps", "Activities 1-5"]),
+    ("M", "Measure", ["8 wastes, data types", "Collection plan", "Yield, DPMO, sigma", "Activity 6"]),
+    ("A", "Analyze", ["Variation", "Pareto, run charts", "5 Whys, Fishbone", "Activities 7-8"]),
+    ("I", "Improve", ["Solution selection", "5S, poka-yoke", "Standard work", "Activity 9"]),
+    ("C", "Control", ["Control plan", "Visual management", "A3 and handover", "Activity 10"]),
 ], kicker="COURSE ROADMAP")
 
 # --- Briefing BEFORE assessment (house hard rule) ---
@@ -188,7 +188,7 @@ concepts.foundations(d)
 # ---------------- the shared lab data set (one scenario, one set of numbers) ----
 d.tile_grid("The Contoso Service Desk Data Set", [
     ("One scenario, one data set",
-     f"Every lab works from the same two weeks of service desk activity: {DS.N} tickets, "
+     f"Every activity works from the same two weeks of service desk activity: {DS.N} tickets, "
      f"{DS.DEFECTIVE} of them defective, {DS.TOTAL_DEFECTS} defects in total."),
     ("Defect opportunities",
      f"Each ticket carries {DS.OPP} defect opportunities — the basis for DPO and DPMO."),
@@ -198,11 +198,11 @@ d.tile_grid("The Contoso Service Desk Data Set", [
      f"Mean {DS.MEAN_MIN} min, median {DS.MEDIAN_MIN} min, against a {DS.TARGET_MIN}-minute goal — "
      "the gap between mean and median is the story."),
     ("Where the files are",
-     "Each lab folder holds data/ (the mock data you analyse) and templates/ "
-     "(the blank worksheets you complete)."),
+     "Each activity folder holds a Learner Worksheet and Checklist, plus data/ "
+     "(the mock data you analyse) and templates/ (the worksheets you complete)."),
     ("Why it matters",
-     "These are the same figures as the Case Study assessment — your lab work is your revision."),
-], kicker="LAB DATA · labs/", cols=2, size=13)
+     "These are the same figures as the Case Study assessment — your activity work is your revision."),
+], kicker="ACTIVITY DATA · activities/", cols=2, size=13)
 
 d.tile_grid("What the Baseline Data Already Tells You", [
     ("Delayed assignment · 48", "40% of all defects — the single largest category."),
@@ -211,7 +211,7 @@ d.tile_grid("What the Baseline Data Already Tells You", [
     ("Reopened ticket · 12", "10% — the fix did not hold the first time."),
     ("Duplicate ticket · 8", "6.7% — the same issue logged twice."),
     ("Unclear status · 4", "3.3% — the trivial many, by count."),
-], kicker="PARETO PREVIEW · ANALYSED IN LAB 7", cols=3, size=12)
+], kicker="PARETO PREVIEW · ANALYSED IN ACTIVITY 7", cols=3, size=12)
 
 # ============================================================ DMAIC PHASES + LABS
 PHASE_FN = {
@@ -224,17 +224,25 @@ PHASE_FN = {
 TOPIC_ACTS = {t["num"]: [a for a in ACTIVITIES if a["topic"] == t["num"]] for t in C.TOPICS}
 
 
+def _short_folder(a, budget=34):
+    """Folder name for the slide eyebrow, truncated on a WORD boundary."""
+    t=a["title"].replace("Elective — ", "")
+    if len(t)<=budget: return t
+    cut=t[:budget].rsplit(" ",1)[0]
+    return cut+"..."
+
+
 def render_labs(acts, phase_label):
     for a in acts:
         opt = a.get("elective", False)
-        tag = f"LAB {a['num']}"
+        tag = f"ACTIVITY {a['num']}"
         d.activity_overview(tag, a["title"], a["desc"], a["build"], a["services"],
                             kicker=f"{phase_label} · HANDS-ON", elective=opt)
         steps = a["steps"]
         total = len(steps)
         short = a["title"][:38]
         for i, (instr, cmd) in enumerate(steps, 1):
-            d.step_slide(f"LAB {a['num']} · {short}", a["title"], i, total, instr, cmd)
+            d.step_slide(f"ACTIVITY {a['num']} · {short}", a["title"], i, total, instr, cmd)
         data_f, tmpl_f, _ = LF.files_for(a["num"])
         if data_f or tmpl_f:
             def cols(header, budget):
@@ -256,10 +264,11 @@ def render_labs(acts, phase_label):
             for name in sorted(tmpl_f):
                 tiles.append((f"templates/{name}",
                               "Worksheet to complete · " + cols(tmpl_f[name][0], 52)))
-            d.tile_grid(f"Lab {a['num']} — Your Data Files", tiles,
-                        kicker=f"LAB {a['num']} · labs/{LF.dirname(a['num'], a['title'])}/",
+            d.tile_grid(f"Activity {a['num']} — Your Data Files", tiles,
+                        kicker=f"ACTIVITY {a['num']} · activities/{a['num']:02d} - "
+                               f"{_short_folder(a)}/",
                         cols=1, size=13)
-        d.test_slide(a["title"], a["test"], kicker=f"LAB {a['num']} · VERIFY")
+        d.test_slide(a["title"], a["test"], kicker=f"ACTIVITY {a['num']} · VERIFY")
 
 
 # Foundations labs (topic 0) come right after the foundations concepts
@@ -282,11 +291,11 @@ for t in C.TOPICS:
         opts = [a for a in acts if a.get("elective")]
         rows = []
         for a in core:
-            rows.append((f"Lab {a['num']} — {a['title'][:46]}", a["build"][:70]))
+            rows.append((f"Activity {a['num']} — {a['title'][:42]}", a["build"][:70]))
         for a in opts:
-            rows.append((f"Lab {a['num']} (elective) — {a['title'].replace('Elective — ', '')[:40]}",
+            rows.append((f"Activity {a['num']} (elective) — {a['title'].replace('Elective — ', '')[:40]}",
                          a["build"][:70]))
-        d.tile_grid(f"Hands-On Labs — {t['phase'].title()}", rows,
+        d.tile_grid(f"Hands-On Activities — {t['phase'].title()}", rows,
                     kicker="WHAT YOU'LL DO", cols=1, size=14, accent=col)
         render_labs(acts, f"DMAIC · {t['phase']}")
     # phase recap

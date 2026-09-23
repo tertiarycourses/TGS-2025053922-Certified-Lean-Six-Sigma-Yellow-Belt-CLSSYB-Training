@@ -21,7 +21,8 @@ import lab_files as LF
 from data_domain1 import DOMAIN1; from data_domain2 import DOMAIN2
 from data_domain3 import DOMAIN3
 ACT=DOMAIN1+DOMAIN2+DOMAIN3
-LABDIR={a['num']: LF.dirname(a['num'], a['title']) for a in ACT}
+from data_activity_meta import META
+LABDIR={a["num"]: f"{a['num']:02d} - " + a["title"].replace("Elective — ", "") for a in ACT}
 import prodoc
 def _find_repo(start):
     env=os.environ.get("COURSE_REPO")
@@ -29,7 +30,7 @@ def _find_repo(start):
     d=start
     for _ in range(8):
         d=os.path.dirname(d)
-        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"labs")): return d
+        if os.path.isdir(os.path.join(d,"courseware")) and (os.path.isdir(os.path.join(d,"activities")) or os.path.isdir(os.path.join(d,"labs"))): return d
     return os.path.dirname(os.path.dirname(HERE))
 REPO=_find_repo(HERE); ASSETS=os.path.join(os.path.dirname(HERE),"assets")
 
@@ -49,12 +50,12 @@ def rule(): B.append(("rule",))
 h1("Introduction")
 p(f"This Learner Guide accompanies the WSQ course {C.TITLE} ({C.COURSE_CODE}), conducted by {C.ORG}. "
   "It follows the DMAIC roadmap end to end — Define, Measure, Analyze, Improve, Control — and provides "
-  "step-by-step instructions for every hands-on lab. Core labs are assessed; elective labs are provided "
+  "step-by-step instructions for every hands-on activity. Core activities are assessed; elective activities are provided "
   "as additional practice and are run when time allows.")
 p("The course content is grounded in the body of knowledge published by The Council for Six Sigma "
   "Certification (CSSC) in 'Six Sigma: A Complete Step-by-Step Guide', so what you learn here matches "
   "the recognised Yellow Belt standard.")
-p("Every lab uses one continuous scenario — the Contoso Service Desk, where IT tickets take too long "
+p("Every activity uses one continuous scenario — the Contoso Service Desk, where IT tickets take too long "
   "to be assigned and employees must chase for status. By the end of the course your lab outputs form a "
   "complete improvement package: role definition, VOC/CTQ, process maps, data collection plan, analysis, "
   "root cause, countermeasures and a control plan.")
@@ -87,14 +88,14 @@ bullets([
  "Pareto Chart (collaborative) — your team brainstorms and votes in one live session and the Pareto chart builds itself: https://alfredang.github.io/paretochart/",
  "NovaSPC — run charts, SPC charts and process capability from your own CSV: https://alfredang.github.io/novaspc/",
 ])
-h3("Core and elective labs")
+h3("Core and elective activities")
 bullets([
  "Core labs are completed by everyone and map directly to the assessment.",
  "Elective labs extend the same scenario with additional Lean Six Sigma tools; complete them if time allows or as post-course practice.",
  "All labs build on the same Contoso Service Desk scenario, so outputs carry forward from one lab to the next.",
 ])
 h3("The Contoso Service Desk data set")
-p(f"Every lab works from one real-shaped data set: two weeks of service desk activity — "
+p(f"Every activity works from one real-shaped data set: two weeks of service desk activity — "
   f"{D.N} tickets, of which {D.DEFECTIVE} contained at least one defect, with {D.TOTAL_DEFECTS} defects "
   f"recorded across {D.OPP} defect opportunities per ticket. Mean assignment time is {D.MEAN_MIN} minutes "
   f"(median {D.MEDIAN_MIN}) against a {D.TARGET_MIN}-minute improvement goal.")
@@ -106,11 +107,12 @@ bullets([
  "The run chart hides a genuine special cause: performance shifts from day 7, when the ITSM platform was migrated.",
  "Each lab folder carries its own data/ (mock data to analyse) and templates/ (worksheets to complete).",
 ])
-h3("Where to find each lab's files")
-p("Each lab is a self-contained folder under labs/ — labs/lab-NN-<name>/ — containing README.md "
-  "(the worksheet), data/ (the CSV mock data) and templates/ (the blank CSV worksheets you fill in). "
-  "Open the CSV files in Excel, Google Sheets or LibreOffice Calc, and always work on a copy.")
-h3("Conventions used in every lab")
+h3("Where to find each activity's files")
+p("Each activity is a self-contained folder under activities/ — activities/NN - <Name>/ — holding a "
+  "Facilitator Guide, a Learner Worksheet and a Checklist (each as DOCX and PDF), plus data/ (the CSV "
+  "mock data) and templates/ (the blank CSV worksheets you fill in). Open the CSV files in Excel, "
+  "Google Sheets or LibreOffice Calc, and always work on a copy.")
+h3("Conventions used in every activity")
 bullets([
  "Each lab states its objective, the deliverable you produce, the steps, and a check to confirm you are done.",
  "Tables shown in the steps can be built in a spreadsheet or on the worksheet provided.",
@@ -128,7 +130,7 @@ for t in C.TOPICS:
     for a in [x for x in ACT if x["topic"]==t["num"]]:
         kind = "Elective" if a.get("elective") else "Core"
         title = a["title"].replace("Elective — ","")
-        h2(f"Lab {a['num']} — {title}  [{kind}]")
+        h2(f"Activity {a['num']} — {title}  [{kind}]")
         p(f"Objective: {a['objective']}")
         p(f"Goal: {a['desc']}")
         h3("What you'll build")
@@ -137,7 +139,7 @@ for t in C.TOPICS:
         steps([(instr,cmd) for instr,cmd in a["steps"]])
         data_f, tmpl_f, lab_note = LF.files_for(a["num"])
         if data_f or tmpl_f:
-            h3("Data and worksheets for this lab")
+            h3("Data and worksheets for this activity")
             items=[]
             for name in sorted(data_f):
                 items.append(f"data/{name} — {len(data_f[name])-1} rows of mock data "
@@ -150,8 +152,8 @@ for t in C.TOPICS:
                 p(lab_note)
         h3("Check your work")
         p(a["test"])
-        note(f"The full worksheet, the mock data and the blank templates for this lab are in "
-             f"labs/{LABDIR[a['num']]}/ — open README.md in that folder.")
+        note(f"The Learner Worksheet, Checklist, mock data and blank templates for this activity are "
+             f"in activities/{LABDIR[a['num']]}/.")
         rule()
 
 h1("Quick Reference — Formulas You Should Know")
@@ -305,7 +307,8 @@ prodoc.add_version_control(doc,[
  ("5", C.VERSION_DATE, "Integrated the SIPOC & Process Map Builder (alfredang.github.io/sipoc/) into Lab 3 and elective Lab 12, with a tool walkthrough added to the Define phase and the online toolkit slide updated to list all five tools.", C.TRAINER),
  ("6", C.VERSION_DATE, "Fixed clipped headings: slide titles now auto-fit to a single line so long lab titles can no longer overprint the LAB/ELECTIVE chips beneath them.", C.TRAINER),
  ("7", "20 July 2026", "Table of contents restored to a live, updatable Word field (previously flattened to static text), so it refreshes on open or F9 while still rendering correctly in the distributed PDF.", C.TRAINER),
-  ("8", C.VERSION_DATE, "Labs restructured into one self-contained folder per lab, each with its own mock data (data/*.csv) and blank worksheets (templates/*.csv). The Contoso Service Desk data set is now generated from a single verified source and reconciles exactly with the Case Study assessment figures (400 tickets, 96 defective, 120 defects, yield 76%, DPU 0.30, DPMO 50,000). Slides, Lesson Plan and Learner Guide updated to reference the lab data.", C.TRAINER),
+  ("8", "23 September 2026", "Labs restructured into one self-contained folder per lab, each with its own mock data (data/*.csv) and blank worksheets (templates/*.csv). The Contoso Service Desk data set is now generated from a single verified source and reconciles exactly with the Case Study assessment figures (400 tickets, 96 defective, 120 defects, yield 76%, DPU 0.30, DPMO 50,000). Slides, Lesson Plan and Learner Guide updated to reference the lab data.", C.TRAINER),
+  ("9", C.VERSION_DATE, "Labs reissued as ACTIVITY PACKS in the Tertiary Infotech house format: one folder per activity named \"NN - Title\", each holding a Facilitator Guide, a Learner Worksheet and a Checklist (DOCX + PDF) alongside its own mock data (data/*.csv) and blank worksheets (templates/*.csv). The previous labs/ Markdown layout is superseded and archived.", C.TRAINER),
 ])
 prodoc.add_toc(doc)
 
