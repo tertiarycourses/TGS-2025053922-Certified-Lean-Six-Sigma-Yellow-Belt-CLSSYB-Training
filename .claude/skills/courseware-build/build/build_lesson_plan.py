@@ -185,7 +185,7 @@ info=[("Course Title",C.TITLE),("WSQ Course Reference",C.COURSE_CODE),
       ("Training Provider",C.ORG+"  ("+C.UEN.replace('UEN: ','UEN ')+")"),
       ("Duration","2 days · 8 training hours per day (16 hours)"),
       ("Daily Timing","9:30 am – 6:30 pm (1-hour lunch; tea breaks within training time)"),
-      ("Mode","Instructor-led, hands-on Lean Six Sigma labs using the Contoso Service Desk improvement scenario"),
+      ("Mode","Instructor-led, hands-on Lean Six Sigma activities using the Contoso Service Desk improvement scenario"),
       ("TSC Alignment",f"{C.TSC_TITLE} ({C.TSC_CODE})"),
       ("Trainer",C.TRAINER)]
 t=doc.add_table(rows=0,cols=2); t.style="Table Grid"
@@ -255,7 +255,7 @@ for day,(theme,rows) in SCHEDULE.items():
 H("Activity Reference (aligned to the DMAIC phases)",1)
 tt=doc.add_table(rows=0,cols=3); tt.style="Table Grid"
 hdr=tt.add_row().cells
-for i,htext in enumerate(["DMAIC phase / Topic","Weighting","Labs"]):
+for i,htext in enumerate(["DMAIC phase / Topic","Weighting","Activities"]):
     set_cell(hdr[i],htext,bold=True,size=10,color=RGBColor(0xFF,0xFF,0xFF),fill=HEADER_FILL)
 for tp in C.TOPICS:
     acts=[a for a in ACT if a["topic"]==tp["num"]]

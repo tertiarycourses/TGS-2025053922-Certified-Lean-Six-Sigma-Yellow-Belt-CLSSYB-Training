@@ -222,7 +222,7 @@ META = {
                "Personal certification readiness plan completed"],
     tips=["A control plan row without a named owner is not a control — it is a wish.",
           "Force the A3 onto one page; the discipline is the lesson.",
-          "This is the last core lab — leave time to connect all ten outputs into one package."]),
+          "This is the last core activity — leave time to connect all ten outputs into one package."]),
 
 11: dict(duration="45 min",
     timing=[(10,"Write each VOC statement on its own note"),(15,"Cluster silently into groups"),

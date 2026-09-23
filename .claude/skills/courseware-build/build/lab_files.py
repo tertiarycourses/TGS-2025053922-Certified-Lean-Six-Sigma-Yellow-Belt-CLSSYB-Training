@@ -232,7 +232,7 @@ LAB_FILES = {
         },
         note="Upload data/assignment-times.csv to NovaSPC for the run chart. Worked answers are in "
              "solution/pareto-table-answers.csv and solution/process-metrics-answers.csv — "
-             "attempt the lab before opening them."),
+             "attempt the activity before opening them."),
     8: dict(
         data={"defect-counts.csv": _pareto_counts, "daily-summary.csv": _daily,
               "root-cause-evidence.csv": _rc_evidence},

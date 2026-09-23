@@ -339,7 +339,7 @@ d.tile_grid("Final Readiness Checklist", [
 d.tile_grid("Continuing Your Lean Six Sigma Journey", [
     ("Apply it at work", "Run one small PDCA improvement in your own area within 30 days."),
     ("Green Belt", "The next step — leads smaller DMAIC projects and handles the statistics."),
-    ("Keep the templates", "Your lab outputs are reusable templates for real projects."),
+    ("Keep the templates", "Your activity outputs are reusable templates for real projects."),
     ("Join the community", "Share improvements with colleagues; Kaizen spreads by example."),
 ], kicker="NEXT STEPS", cols=2, size=15, accent=AMBER)
 

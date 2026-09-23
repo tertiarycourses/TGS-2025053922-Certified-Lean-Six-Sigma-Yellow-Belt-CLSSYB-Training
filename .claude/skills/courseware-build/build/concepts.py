@@ -302,7 +302,7 @@ def define_phase(d):
         ("Enforces the rules", "Warns if you drift outside 5–7 steps, and tracks your pain-point count."),
         ("Tag pain points", "Waiting, rework loop, unclear ownership, duplicate entry, missing decision rule."),
         ("Swimlane for free", "Assign an actor to each step and the swimlane and handoff table build themselves."),
-        ("Check my SIPOC", "Validates the same rules your lab and assessment are marked against."),
+        ("Check my SIPOC", "Validates the same rules your activity work and assessment are marked against."),
     ], kicker="DEFINE · YOUR ONLINE TOOL", cols=2, size=13, accent=TEAL)
     d.flow_h("Using the SIPOC Builder in Activity 3", [
         "Set the process name, start point and stop point",

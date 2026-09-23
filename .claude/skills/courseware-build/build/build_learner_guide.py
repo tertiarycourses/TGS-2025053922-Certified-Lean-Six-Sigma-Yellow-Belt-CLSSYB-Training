@@ -3,11 +3,11 @@
 root) and a DOCX (courseware/LG-*.docx) from one source, so they never diverge.
 
 House format: cover page, Document Version Control Record, auto TOC, Arial 11pt
-body, one section per DMAIC phase, one sub-section per lab (Objective · Goal ·
+body, one section per DMAIC phase, one sub-section per activity (Objective · Goal ·
 What you'll build · Step-by-step · Check your work), plus quick-reference
 formulas, assessment preparation and a glossary. All content is driven by
 course_data + the domain data files, keeping the LG 100% aligned with the slide
-deck, Lesson Plan and labs.
+deck, Lesson Plan and activities.
 """
 import os, sys
 from docx import Document
@@ -56,7 +56,7 @@ p("The course content is grounded in the body of knowledge published by The Coun
   "Certification (CSSC) in 'Six Sigma: A Complete Step-by-Step Guide', so what you learn here matches "
   "the recognised Yellow Belt standard.")
 p("Every activity uses one continuous scenario — the Contoso Service Desk, where IT tickets take too long "
-  "to be assigned and employees must chase for status. By the end of the course your lab outputs form a "
+  "to be assigned and employees must chase for status. By the end of the course your activity outputs form a "
   "complete improvement package: role definition, VOC/CTQ, process maps, data collection plan, analysis, "
   "root cause, countermeasures and a control plan.")
 
@@ -74,12 +74,12 @@ h1("Before You Start")
 h3("What you need")
 bullets([
  "A laptop with a spreadsheet application (Microsoft Excel, Google Sheets or LibreOffice Calc).",
- "A browser, for the interactive problem-solving tools used in the Analyze labs.",
+ "A browser, for the interactive problem-solving tools used in the Analyze activities.",
  "The course slides and this Learner Guide, downloaded from https://lms-tms.tertiaryinfotech.com.",
  "A work process of your own to think about — the tools apply far better when the example is real.",
 ])
 h3("The interactive problem-solving toolkit")
-p("Five browser-based tools are used during the labs. No installation, licence or sign-up is required, "
+p("Five browser-based tools are used during the activities. No installation, licence or sign-up is required, "
   "and nothing you enter leaves your browser.")
 bullets([
  "SIPOC & Process Map Builder — a guided SIPOC that enforces the 5-7 step rule, tags pain points, and generates the swimlane and handoff table from your actor assignments: https://alfredang.github.io/sipoc/",
@@ -90,22 +90,22 @@ bullets([
 ])
 h3("Core and elective activities")
 bullets([
- "Core labs are completed by everyone and map directly to the assessment.",
- "Elective labs extend the same scenario with additional Lean Six Sigma tools; complete them if time allows or as post-course practice.",
- "All labs build on the same Contoso Service Desk scenario, so outputs carry forward from one lab to the next.",
+ "Core activities are completed by everyone and map directly to the assessment.",
+ "Elective activities extend the same scenario with additional Lean Six Sigma tools; complete them if time allows or as post-course practice.",
+ "All activities build on the same Contoso Service Desk scenario, so outputs carry forward from one activity to the next.",
 ])
 h3("The Contoso Service Desk data set")
 p(f"Every activity works from one real-shaped data set: two weeks of service desk activity — "
   f"{D.N} tickets, of which {D.DEFECTIVE} contained at least one defect, with {D.TOTAL_DEFECTS} defects "
   f"recorded across {D.OPP} defect opportunities per ticket. Mean assignment time is {D.MEAN_MIN} minutes "
   f"(median {D.MEDIAN_MIN}) against a {D.TARGET_MIN}-minute improvement goal.")
-p("These are the same figures the Case Study assessment uses, so the numbers you calculate in the labs "
+p("These are the same figures the Case Study assessment uses, so the numbers you calculate in the activities "
   "are the numbers you will be assessed on.")
 bullets([
  f"Yield {D.YIELD*100:.0f}% · DPU {D.DPU:.2f} · DPO {D.DPO:.4f} · DPMO {int(D.DPMO):,} · sigma level ~{D.SIGMA}.",
  "Pareto vital few: Delayed assignment (40%) and Missing information (25%) — 65% of all defects.",
  "The run chart hides a genuine special cause: performance shifts from day 7, when the ITSM platform was migrated.",
- "Each lab folder carries its own data/ (mock data to analyse) and templates/ (worksheets to complete).",
+ "Each activity folder carries its own data/ (mock data to analyse) and templates/ (worksheets to complete).",
 ])
 h3("Where to find each activity's files")
 p("Each activity is a self-contained folder under activities/ — activities/NN - <Name>/ — holding a "
@@ -114,13 +114,13 @@ p("Each activity is a self-contained folder under activities/ — activities/NN 
   "Google Sheets or LibreOffice Calc, and always work on a copy.")
 h3("Conventions used in every activity")
 bullets([
- "Each lab states its objective, the deliverable you produce, the steps, and a check to confirm you are done.",
+ "Each activity states its objective, the deliverable you produce, the steps, and a check to confirm you are done.",
  "Tables shown in the steps can be built in a spreadsheet or on the worksheet provided.",
- "Where a lab uses an online tool, the tool URL is shown with the step.",
- "Keep every lab output — they combine into your final improvement package and are your revision material.",
+ "Where an activity uses an online tool, the tool URL is shown with the step.",
+ "Keep every activity output — they combine into your final improvement package and are your revision material.",
 ])
 
-# ---------------- per-topic, per-lab ----------------
+# ---------------- per-topic, per-activity ----------------
 for t in C.TOPICS:
     label = t["phase"].title() if t["num"] else "Foundations"
     h1(f"{t['phase']} — {t['title']}  ({t['weighting']})")
@@ -194,14 +194,14 @@ h1("Preparing for the Assessment")
 bullets([
  C.ASSESSMENT["written"],
  C.ASSESSMENT["practical"],
- "Both papers are open book — you may use these slides, this Learner Guide and your lab outputs.",
- "Revise by re-reading your own lab outputs; they follow exactly the same scenario as the Case Study.",
+ "Both papers are open book — you may use these slides, this Learner Guide and your activity outputs.",
+ "Revise by re-reading your own activity outputs; they follow exactly the same scenario as the Case Study.",
  "Be ready to define Lean, Six Sigma and Lean Six Sigma, and explain how they differ.",
  "Be ready to name the eight wastes and give a service-industry example of each.",
  "Be ready to explain each DMAIC phase, what it delivers and which tools belong to it.",
  "Be ready to calculate yield, DPU, DPO and DPMO from raw data and read off the sigma level.",
  "Be ready to explain how the Fishbone diagram and 5 Whys are used together to find a root cause.",
- "Re-work the labs from memory — being able to produce the tools unaided is the best preparation.",
+ "Re-work the activities from memory — being able to produce the tools unaided is the best preparation.",
  C.ASSESSMENT["note"],
 ])
 
