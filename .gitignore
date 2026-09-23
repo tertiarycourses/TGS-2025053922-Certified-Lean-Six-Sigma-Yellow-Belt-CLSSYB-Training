@@ -23,3 +23,9 @@ __pycache__/
 *[0-9].docx.bak
 * 2.docx
 * 2.pdf
+
+# Local environment — internal Drive links, never pushed
+.env
+.env.*
+!.env.example
+!.env.sample
